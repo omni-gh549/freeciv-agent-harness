@@ -1,5 +1,6 @@
 import copy
 import re
+from urllib.parse import quote
 
 from .client import GameClient
 from .protocol import bitset_has
@@ -117,8 +118,16 @@ class GameService:
             raise ValueError('Chat requires 1..350 characters on one line')
         if message.lstrip().startswith('/'):
             raise ValueError('Chat cannot run server commands; use save/load/lobby tools')
+        message = message.strip()
+        # Match Freeciv-web's encode_message_text: message_escape.patch treats
+        # raw quotes as delimiters. HTML entities must precede URI encoding.
+        escaped = (message.replace('&', '&amp;').replace("'", '&apos;')
+                   .replace('"', '&quot;').replace('<', '&lt;').replace('>', '&gt;'))
+        encoded = quote(escaped, safe="~()*!.'-")
+        if len(encoded) > 1535:
+            raise ValueError('Encoded chat exceeds the server packet limit; split it into shorter messages')
         cursor = self.client.events.cursor
-        return self.client.request('chat_msg_req', {'message': message},
+        return self.client.request('chat_msg_req', {'message': encoded},
             lambda: any(e['kind'] == 'chat' and message in e.get('text', '') for e in self.client.events.read(after=cursor)['events']))
 
     def save(self):

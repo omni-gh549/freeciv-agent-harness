@@ -203,6 +203,16 @@ class ServiceTests(unittest.TestCase):
         for message in ('/load danger', ' /set timeout 5', 'a\nb', 'x' * 351):
             with self.assertRaises(ValueError): self.s.chat(message)
 
+    def test_chat_matches_webclient_escaping(self):
+        self.s.chat('  Who\'s "ready"? A&B <peace> 日本  ')
+        self.assertEqual(self.client.sent[-1][1]['message'],
+            'Who%26apos%3Bs%20%26quot%3Bready%26quot%3B%3F%20A%26amp%3BB%20%26lt%3Bpeace%26gt%3B%20%E6%97%A5%E6%9C%AC')
+
+    def test_chat_rejects_encoded_packet_overflow(self):
+        with self.assertRaisesRegex(ValueError, 'packet limit'):
+            self.s.chat('日本語' * 100)
+        self.assertFalse(self.client.sent)
+
     def test_load_rejects_live_game_and_paths(self):
         with self.assertRaises(ValueError): self.s.load('save')
         self.client.state.running = False
