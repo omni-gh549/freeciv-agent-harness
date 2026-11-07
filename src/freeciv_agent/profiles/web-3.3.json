@@ -1,0 +1,6228 @@
+{
+  "name": "Freeciv-web 3.3 development JSON protocol",
+  "capability": "+Freeciv.Web.Devel-3.3",
+  "upstream": "https://github.com/freeciv/freeciv-web",
+  "upstream_revision": "c19ce060fadc99663f8aba3652ca94b07174467c",
+  "packets": {
+    "processing_started": {
+      "id": 0,
+      "client_to_server": false,
+      "fields": []
+    },
+    "processing_finished": {
+      "id": 1,
+      "client_to_server": false,
+      "fields": []
+    },
+    "investigate_started": {
+      "id": 21,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "city_id",
+          "type": "CITY"
+        }
+      ]
+    },
+    "investigate_finished": {
+      "id": 22,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "city_id",
+          "type": "CITY"
+        }
+      ]
+    },
+    "server_join_req": {
+      "id": 4,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "username",
+          "type": "STRING"
+        },
+        {
+          "name": "capability",
+          "type": "STRING"
+        },
+        {
+          "name": "version_label",
+          "type": "STRING"
+        },
+        {
+          "name": "major_version",
+          "type": "UINT32"
+        },
+        {
+          "name": "minor_version",
+          "type": "UINT32"
+        },
+        {
+          "name": "patch_version",
+          "type": "UINT32"
+        }
+      ]
+    },
+    "server_join_reply": {
+      "id": 5,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "you_can_join",
+          "type": "BOOL"
+        },
+        {
+          "name": "message",
+          "type": "STRING"
+        },
+        {
+          "name": "capability",
+          "type": "STRING"
+        },
+        {
+          "name": "challenge_file",
+          "type": "STRING"
+        },
+        {
+          "name": "conn_id",
+          "type": "CONNECTION"
+        }
+      ]
+    },
+    "authentication_req": {
+      "id": 6,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "type",
+          "type": "AUTH_TYPE"
+        },
+        {
+          "name": "message",
+          "type": "STRING"
+        }
+      ]
+    },
+    "authentication_reply": {
+      "id": 7,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "password",
+          "type": "STRING"
+        }
+      ]
+    },
+    "server_shutdown": {
+      "id": 8,
+      "client_to_server": false,
+      "fields": []
+    },
+    "nation_select_req": {
+      "id": 10,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "player_no",
+          "type": "PLAYER"
+        },
+        {
+          "name": "nation_no",
+          "type": "NATION"
+        },
+        {
+          "name": "is_male",
+          "type": "BOOL"
+        },
+        {
+          "name": "name",
+          "type": "STRING"
+        },
+        {
+          "name": "style",
+          "type": "UINT8"
+        }
+      ]
+    },
+    "player_ready": {
+      "id": 11,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "player_no",
+          "type": "PLAYER"
+        },
+        {
+          "name": "is_ready",
+          "type": "BOOL"
+        }
+      ]
+    },
+    "endgame_report": {
+      "id": 12,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "category_num",
+          "type": "UINT8"
+        },
+        {
+          "name": "category_name",
+          "type": "STRING"
+        },
+        {
+          "name": "player_num",
+          "type": "PLAYER"
+        }
+      ]
+    },
+    "endgame_player": {
+      "id": 223,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "category_num",
+          "type": "UINT8"
+        },
+        {
+          "name": "player_id",
+          "type": "PLAYER"
+        },
+        {
+          "name": "score",
+          "type": "SCORE"
+        },
+        {
+          "name": "category_score",
+          "type": "SCORE"
+        },
+        {
+          "name": "winner",
+          "type": "BOOL"
+        }
+      ]
+    },
+    "tile_info": {
+      "id": 15,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "tile",
+          "type": "TILE"
+        },
+        {
+          "name": "continent",
+          "type": "CONTINENT"
+        },
+        {
+          "name": "known",
+          "type": "KNOWN"
+        },
+        {
+          "name": "owner",
+          "type": "PLAYER"
+        },
+        {
+          "name": "extras_owner",
+          "type": "PLAYER"
+        },
+        {
+          "name": "worked",
+          "type": "CITY"
+        },
+        {
+          "name": "terrain",
+          "type": "TERRAIN"
+        },
+        {
+          "name": "resource",
+          "type": "RESOURCE"
+        },
+        {
+          "name": "extras",
+          "type": "BV_EXTRAS"
+        },
+        {
+          "name": "placing",
+          "type": "EXTRA"
+        },
+        {
+          "name": "place_turn",
+          "type": "TURN"
+        },
+        {
+          "name": "altitude",
+          "type": "SINT16"
+        },
+        {
+          "name": "spec_sprite",
+          "type": "STRING"
+        },
+        {
+          "name": "label",
+          "type": "STRING"
+        }
+      ]
+    },
+    "game_info": {
+      "id": 16,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "add_to_size_limit",
+          "type": "UINT8"
+        },
+        {
+          "name": "aifill",
+          "type": "PLAYER"
+        },
+        {
+          "name": "persistent_ready",
+          "type": "PERSISTENT_READY"
+        },
+        {
+          "name": "airlifting_style",
+          "type": "AIRLIFTING_STYLE"
+        },
+        {
+          "name": "airlift_from_always_enabled",
+          "type": "BOOL"
+        },
+        {
+          "name": "airlift_to_always_enabled",
+          "type": "BOOL"
+        },
+        {
+          "name": "angrycitizen",
+          "type": "UINT8"
+        },
+        {
+          "name": "base_pollution",
+          "type": "SINT16"
+        },
+        {
+          "name": "base_tech_cost",
+          "type": "UINT16"
+        },
+        {
+          "name": "min_tech_cost",
+          "type": "UINT16"
+        },
+        {
+          "name": "tech_leak_pct",
+          "type": "UINT8"
+        },
+        {
+          "name": "border_city_radius_sq",
+          "type": "UINT16"
+        },
+        {
+          "name": "border_size_effect",
+          "type": "UINT8"
+        },
+        {
+          "name": "border_city_permanent_radius_sq",
+          "type": "SINT16"
+        },
+        {
+          "name": "borders",
+          "type": "BORDERS_MODE"
+        },
+        {
+          "name": "base_bribe_cost",
+          "type": "UINT32"
+        },
+        {
+          "name": "caravan_bonus_style",
+          "type": "CARAVAN_BONUS_STYLE"
+        },
+        {
+          "name": "culture_vic_points",
+          "type": "UINT32"
+        },
+        {
+          "name": "culture_vic_lead",
+          "type": "UINT16"
+        },
+        {
+          "name": "culture_migration_pml",
+          "type": "UINT16"
+        },
+        {
+          "name": "history_interest_pml",
+          "type": "UINT16"
+        },
+        {
+          "name": "world_peace_turns",
+          "type": "UINT16"
+        },
+        {
+          "name": "celebratesize",
+          "type": "UINT8"
+        },
+        {
+          "name": "changable_tax",
+          "type": "BOOL"
+        },
+        {
+          "name": "pop_report_zeroes",
+          "type": "UINT8"
+        },
+        {
+          "name": "citizen_nationality",
+          "type": "BOOL"
+        },
+        {
+          "name": "unit_builders_nationality",
+          "type": "BOOL"
+        },
+        {
+          "name": "citizen_convert_speed",
+          "type": "UINT16"
+        },
+        {
+          "name": "conquest_convert_pct",
+          "type": "UINT8"
+        },
+        {
+          "name": "citizen_partisans_pct",
+          "type": "UINT8"
+        },
+        {
+          "name": "citymindist",
+          "type": "UINT8"
+        },
+        {
+          "name": "cooling",
+          "type": "UINT32"
+        },
+        {
+          "name": "coolinglevel",
+          "type": "UINT32"
+        },
+        {
+          "name": "diplchance_initial_odds",
+          "type": "BV_ACTIONS"
+        },
+        {
+          "name": "diplomacy",
+          "type": "DIPLOMACY_MODE"
+        },
+        {
+          "name": "fogofwar",
+          "type": "BOOL"
+        },
+        {
+          "name": "food_cost",
+          "type": "UINT16"
+        },
+        {
+          "name": "foodbox",
+          "type": "UINT32"
+        },
+        {
+          "name": "forced_gold",
+          "type": "UINT8"
+        },
+        {
+          "name": "forced_luxury",
+          "type": "UINT8"
+        },
+        {
+          "name": "forced_science",
+          "type": "UINT8"
+        },
+        {
+          "name": "fulltradesize",
+          "type": "UINT8"
+        },
+        {
+          "name": "trade_world_rel_pct",
+          "type": "UINT8"
+        },
+        {
+          "name": "min_trade_route_val",
+          "type": "UINT8"
+        },
+        {
+          "name": "reveal_trade_partner",
+          "type": "BOOL"
+        },
+        {
+          "name": "goods_selection",
+          "type": "GOODS_SELECTION"
+        },
+        {
+          "name": "global_advance_count",
+          "type": "UINT16"
+        },
+        {
+          "name": "global_advances",
+          "type": "BOOL"
+        },
+        {
+          "name": "global_warming",
+          "type": "BOOL"
+        },
+        {
+          "name": "globalwarming",
+          "type": "UINT32"
+        },
+        {
+          "name": "gold",
+          "type": "GOLD"
+        },
+        {
+          "name": "gold_upkeep_style",
+          "type": "GOLD_UPKEEP_STYLE"
+        },
+        {
+          "name": "homeless_gold_upkeep",
+          "type": "BOOL"
+        },
+        {
+          "name": "infrapoints",
+          "type": "UINT32"
+        },
+        {
+          "name": "revolentype",
+          "type": "REVOLENTYPE"
+        },
+        {
+          "name": "default_government_id",
+          "type": "GOVERNMENT"
+        },
+        {
+          "name": "government_during_revolution_id",
+          "type": "GOVERNMENT"
+        },
+        {
+          "name": "granary_food_inc",
+          "type": "UINT16"
+        },
+        {
+          "name": "granary_food_ini",
+          "type": "UINT16"
+        },
+        {
+          "name": "granary_num_inis",
+          "type": "UINT8"
+        },
+        {
+          "name": "great_wonder_owners",
+          "type": "PLAYER"
+        },
+        {
+          "name": "happy_cost",
+          "type": "UINT16"
+        },
+        {
+          "name": "happyborders",
+          "type": "HAPPYBORDERSTYPE"
+        },
+        {
+          "name": "heating",
+          "type": "UINT32"
+        },
+        {
+          "name": "illness_base_factor",
+          "type": "UINT16"
+        },
+        {
+          "name": "illness_min_size",
+          "type": "UINT8"
+        },
+        {
+          "name": "illness_on",
+          "type": "BOOL"
+        },
+        {
+          "name": "illness_pollution_factor",
+          "type": "UINT16"
+        },
+        {
+          "name": "illness_trade_infection",
+          "type": "UINT16"
+        },
+        {
+          "name": "init_city_radius_sq",
+          "type": "UINT8"
+        },
+        {
+          "name": "is_edit_mode",
+          "type": "BOOL"
+        },
+        {
+          "name": "is_new_game",
+          "type": "BOOL"
+        },
+        {
+          "name": "killcitizen",
+          "type": "BOOL"
+        },
+        {
+          "name": "killstack",
+          "type": "BOOL"
+        },
+        {
+          "name": "only_killing_makes_veteran",
+          "type": "BOOL"
+        },
+        {
+          "name": "only_real_fight_makes_veteran",
+          "type": "BOOL"
+        },
+        {
+          "name": "combat_odds_scaled_veterancy",
+          "type": "BOOL"
+        },
+        {
+          "name": "damage_reduces_bombard_rate",
+          "type": "BOOL"
+        },
+        {
+          "name": "low_firepower_badwallattacker",
+          "type": "UINT8"
+        },
+        {
+          "name": "low_firepower_pearl_harbour",
+          "type": "UINT8"
+        },
+        {
+          "name": "low_firepower_combat_bonus",
+          "type": "UINT8"
+        },
+        {
+          "name": "low_firepower_nonnat_bombard",
+          "type": "UINT8"
+        },
+        {
+          "name": "nuke_pop_loss_pct",
+          "type": "UINT8"
+        },
+        {
+          "name": "nuke_defender_survival_chance_pct",
+          "type": "UINT8"
+        },
+        {
+          "name": "min_city_center_output",
+          "type": "UINT16"
+        },
+        {
+          "name": "muuk_food_wipe",
+          "type": "BOOL"
+        },
+        {
+          "name": "muuk_gold_wipe",
+          "type": "BOOL"
+        },
+        {
+          "name": "muuk_shield_wipe",
+          "type": "BOOL"
+        },
+        {
+          "name": "notradesize",
+          "type": "UINT8"
+        },
+        {
+          "name": "nuclear_winter",
+          "type": "BOOL"
+        },
+        {
+          "name": "nuclearwinter",
+          "type": "UINT32"
+        },
+        {
+          "name": "phase",
+          "type": "PHASE"
+        },
+        {
+          "name": "phase_mode",
+          "type": "PHASE_MODE"
+        },
+        {
+          "name": "pillage_select",
+          "type": "BOOL"
+        },
+        {
+          "name": "steal_maps_reveals_all_cities",
+          "type": "BOOL"
+        },
+        {
+          "name": "poison_empties_food_stock",
+          "type": "BOOL"
+        },
+        {
+          "name": "tech_steal_allow_holes",
+          "type": "BOOL"
+        },
+        {
+          "name": "tech_trade_allow_holes",
+          "type": "BOOL"
+        },
+        {
+          "name": "tech_trade_loss_allow_holes",
+          "type": "BOOL"
+        },
+        {
+          "name": "tech_parasite_allow_holes",
+          "type": "BOOL"
+        },
+        {
+          "name": "tech_loss_allow_holes",
+          "type": "BOOL"
+        },
+        {
+          "name": "rapturedelay",
+          "type": "UINT8"
+        },
+        {
+          "name": "disasters",
+          "type": "UINT16"
+        },
+        {
+          "name": "restrictinfra",
+          "type": "BOOL"
+        },
+        {
+          "name": "unreachable_protects",
+          "type": "BOOL"
+        },
+        {
+          "name": "sciencebox",
+          "type": "UINT32"
+        },
+        {
+          "name": "shieldbox",
+          "type": "UINT32"
+        },
+        {
+          "name": "skill_level",
+          "type": "AI_LEVEL"
+        },
+        {
+          "name": "victory_conditions",
+          "type": "VICTORY_CONDITIONS"
+        },
+        {
+          "name": "team_pooled_research",
+          "type": "BOOL"
+        },
+        {
+          "name": "tech",
+          "type": "UINT32"
+        },
+        {
+          "name": "tech_cost_style",
+          "type": "TECH_COST_STYLE"
+        },
+        {
+          "name": "tech_leakage",
+          "type": "TECH_LEAKAGE_STYLE"
+        },
+        {
+          "name": "tech_upkeep_divider",
+          "type": "UINT16"
+        },
+        {
+          "name": "tech_upkeep_style",
+          "type": "TECH_UPKEEP_STYLE"
+        },
+        {
+          "name": "techloss_forgiveness",
+          "type": "SINT16"
+        },
+        {
+          "name": "free_tech_method",
+          "type": "FTM"
+        },
+        {
+          "name": "gameloss_style",
+          "type": "GLS"
+        },
+        {
+          "name": "timeout",
+          "type": "UINT32"
+        },
+        {
+          "name": "first_timeout",
+          "type": "UINT32"
+        },
+        {
+          "name": "tired_attack",
+          "type": "BOOL"
+        },
+        {
+          "name": "trademindist",
+          "type": "UINT16"
+        },
+        {
+          "name": "trade_revenue_style",
+          "type": "TRADE_REVENUE_STYLE"
+        },
+        {
+          "name": "trading_city",
+          "type": "BOOL"
+        },
+        {
+          "name": "trading_gold",
+          "type": "BOOL"
+        },
+        {
+          "name": "trading_tech",
+          "type": "BOOL"
+        },
+        {
+          "name": "turn",
+          "type": "TURN"
+        },
+        {
+          "name": "warminglevel",
+          "type": "UINT32"
+        },
+        {
+          "name": "year",
+          "type": "YEAR"
+        },
+        {
+          "name": "year_0_hack",
+          "type": "BOOL"
+        },
+        {
+          "name": "top_cities_count",
+          "type": "UINT8"
+        },
+        {
+          "name": "fragment_count",
+          "type": "UINT16"
+        },
+        {
+          "name": "civil_war_enabled",
+          "type": "BOOL"
+        },
+        {
+          "name": "civil_war_bonus_celebrating",
+          "type": "SINT16"
+        },
+        {
+          "name": "civil_war_bonus_unhappy",
+          "type": "SINT16"
+        },
+        {
+          "name": "granularity",
+          "type": "UINT16"
+        },
+        {
+          "name": "small_wonder_visibility",
+          "type": "WONDER_VISIB"
+        }
+      ]
+    },
+    "calendar_info": {
+      "id": 255,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "positive_year_label",
+          "type": "STRING"
+        },
+        {
+          "name": "negative_year_label",
+          "type": "STRING"
+        },
+        {
+          "name": "calendar_fragments",
+          "type": "UINT16"
+        },
+        {
+          "name": "calendar_fragment_name",
+          "type": "STRING"
+        },
+        {
+          "name": "calendar_skip_0",
+          "type": "BOOL"
+        }
+      ]
+    },
+    "timeout_info": {
+      "id": 244,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "seconds_to_phasedone",
+          "type": "SFLOAT10x3"
+        },
+        {
+          "name": "last_turn_change_time",
+          "type": "SFLOAT10x3"
+        }
+      ]
+    },
+    "map_info": {
+      "id": 17,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "xsize",
+          "type": "XYSIZE"
+        },
+        {
+          "name": "ysize",
+          "type": "XYSIZE"
+        },
+        {
+          "name": "topology_id",
+          "type": "UINT8"
+        },
+        {
+          "name": "wrap_id",
+          "type": "UINT8"
+        },
+        {
+          "name": "north_latitude",
+          "type": "SINT16"
+        },
+        {
+          "name": "south_latitude",
+          "type": "SINT16"
+        },
+        {
+          "name": "altitude_info",
+          "type": "BOOL"
+        }
+      ]
+    },
+    "nuke_tile_info": {
+      "id": 18,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "tile",
+          "type": "TILE"
+        }
+      ]
+    },
+    "team_name_info": {
+      "id": 19,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "team_id",
+          "type": "TEAM"
+        },
+        {
+          "name": "team_name",
+          "type": "STRING"
+        }
+      ]
+    },
+    "achievement_info": {
+      "id": 238,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UINT8"
+        },
+        {
+          "name": "gained",
+          "type": "BOOL"
+        },
+        {
+          "name": "first",
+          "type": "BOOL"
+        }
+      ]
+    },
+    "chat_msg": {
+      "id": 25,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "message",
+          "type": "STRING"
+        },
+        {
+          "name": "tile",
+          "type": "TILE"
+        },
+        {
+          "name": "event",
+          "type": "EVENT"
+        },
+        {
+          "name": "turn",
+          "type": "TURN"
+        },
+        {
+          "name": "phase",
+          "type": "PHASE"
+        },
+        {
+          "name": "conn_id",
+          "type": "CONNECTION"
+        }
+      ]
+    },
+    "early_chat_msg": {
+      "id": 28,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "message",
+          "type": "STRING"
+        },
+        {
+          "name": "tile",
+          "type": "TILE"
+        },
+        {
+          "name": "event",
+          "type": "EVENT"
+        },
+        {
+          "name": "turn",
+          "type": "TURN"
+        },
+        {
+          "name": "phase",
+          "type": "PHASE"
+        },
+        {
+          "name": "conn_id",
+          "type": "CONNECTION"
+        }
+      ]
+    },
+    "chat_msg_req": {
+      "id": 26,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "message",
+          "type": "ESTRING"
+        }
+      ]
+    },
+    "connect_msg": {
+      "id": 27,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "message",
+          "type": "STRING"
+        }
+      ]
+    },
+    "server_info": {
+      "id": 29,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "version_label",
+          "type": "STRING"
+        },
+        {
+          "name": "major_version",
+          "type": "UINT32"
+        },
+        {
+          "name": "minor_version",
+          "type": "UINT32"
+        },
+        {
+          "name": "patch_version",
+          "type": "UINT32"
+        },
+        {
+          "name": "emerg_version",
+          "type": "UINT32"
+        }
+      ]
+    },
+    "city_remove": {
+      "id": 30,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "city_id",
+          "type": "CITY"
+        }
+      ]
+    },
+    "city_info": {
+      "id": 31,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "CITY"
+        },
+        {
+          "name": "tile",
+          "type": "TILE"
+        },
+        {
+          "name": "owner",
+          "type": "PLAYER"
+        },
+        {
+          "name": "original",
+          "type": "PLAYER"
+        },
+        {
+          "name": "size",
+          "type": "CITIZENS"
+        },
+        {
+          "name": "city_radius_sq",
+          "type": "UINT8"
+        },
+        {
+          "name": "style",
+          "type": "UINT8"
+        },
+        {
+          "name": "capital",
+          "type": "CAPITAL"
+        },
+        {
+          "name": "ppl_happy",
+          "type": "CITIZENS"
+        },
+        {
+          "name": "ppl_content",
+          "type": "CITIZENS"
+        },
+        {
+          "name": "ppl_unhappy",
+          "type": "CITIZENS"
+        },
+        {
+          "name": "ppl_angry",
+          "type": "CITIZENS"
+        },
+        {
+          "name": "specialists_size",
+          "type": "UINT8"
+        },
+        {
+          "name": "specialists",
+          "type": "CITIZENS"
+        },
+        {
+          "name": "history",
+          "type": "UINT32"
+        },
+        {
+          "name": "culture",
+          "type": "UINT32"
+        },
+        {
+          "name": "buy_cost",
+          "type": "UINT32"
+        },
+        {
+          "name": "surplus",
+          "type": "SINT16"
+        },
+        {
+          "name": "waste",
+          "type": "UINT16"
+        },
+        {
+          "name": "unhappy_penalty",
+          "type": "SINT16"
+        },
+        {
+          "name": "prod",
+          "type": "UINT16"
+        },
+        {
+          "name": "citizen_base",
+          "type": "SINT16"
+        },
+        {
+          "name": "usage",
+          "type": "SINT16"
+        },
+        {
+          "name": "food_stock",
+          "type": "SINT16"
+        },
+        {
+          "name": "shield_stock",
+          "type": "UINT16"
+        },
+        {
+          "name": "trade_route_count",
+          "type": "UINT8"
+        },
+        {
+          "name": "pollution",
+          "type": "UINT16"
+        },
+        {
+          "name": "illness_trade",
+          "type": "UINT16"
+        },
+        {
+          "name": "production_kind",
+          "type": "UINT8"
+        },
+        {
+          "name": "production_value",
+          "type": "UINT8"
+        },
+        {
+          "name": "turn_founded",
+          "type": "TURN"
+        },
+        {
+          "name": "turn_last_built",
+          "type": "TURN"
+        },
+        {
+          "name": "changed_from_kind",
+          "type": "UINT8"
+        },
+        {
+          "name": "changed_from_value",
+          "type": "UINT8"
+        },
+        {
+          "name": "before_change_shields",
+          "type": "UINT16"
+        },
+        {
+          "name": "disbanded_shields",
+          "type": "UINT16"
+        },
+        {
+          "name": "caravan_shields",
+          "type": "UINT16"
+        },
+        {
+          "name": "last_turns_shield_surplus",
+          "type": "UINT16"
+        },
+        {
+          "name": "airlift",
+          "type": "UINT8"
+        },
+        {
+          "name": "did_buy",
+          "type": "BOOL"
+        },
+        {
+          "name": "did_sell",
+          "type": "BOOL"
+        },
+        {
+          "name": "was_happy",
+          "type": "BOOL"
+        },
+        {
+          "name": "had_famine",
+          "type": "BOOL"
+        },
+        {
+          "name": "diplomat_investigate",
+          "type": "BOOL"
+        },
+        {
+          "name": "walls",
+          "type": "UINT8"
+        },
+        {
+          "name": "city_image",
+          "type": "SINT8"
+        },
+        {
+          "name": "steal",
+          "type": "UINT16"
+        },
+        {
+          "name": "worklist",
+          "type": "WORKLIST"
+        },
+        {
+          "name": "improvements",
+          "type": "BV_IMPRS"
+        },
+        {
+          "name": "city_options",
+          "type": "BV_CITY_OPTIONS"
+        },
+        {
+          "name": "name",
+          "type": "ESTRING"
+        }
+      ]
+    },
+    "city_nationalities": {
+      "id": 46,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "CITY"
+        },
+        {
+          "name": "nationalities_count",
+          "type": "UINT8"
+        },
+        {
+          "name": "nation_id",
+          "type": "PLAYER"
+        },
+        {
+          "name": "nation_citizens",
+          "type": "CITIZENS"
+        }
+      ]
+    },
+    "city_update_counters": {
+      "id": 514,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "city",
+          "type": "CITY"
+        },
+        {
+          "name": "count",
+          "type": "UINT8"
+        },
+        {
+          "name": "counters",
+          "type": "COUNTER"
+        }
+      ]
+    },
+    "city_short_info": {
+      "id": 32,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "CITY"
+        },
+        {
+          "name": "tile",
+          "type": "TILE"
+        },
+        {
+          "name": "owner",
+          "type": "PLAYER"
+        },
+        {
+          "name": "size",
+          "type": "UINT8"
+        },
+        {
+          "name": "style",
+          "type": "UINT8"
+        },
+        {
+          "name": "capital",
+          "type": "CAPITAL"
+        },
+        {
+          "name": "occupied",
+          "type": "BOOL"
+        },
+        {
+          "name": "walls",
+          "type": "UINT8"
+        },
+        {
+          "name": "happy",
+          "type": "BOOL"
+        },
+        {
+          "name": "unhappy",
+          "type": "BOOL"
+        },
+        {
+          "name": "city_image",
+          "type": "SINT8"
+        },
+        {
+          "name": "improvements",
+          "type": "BV_IMPRS"
+        },
+        {
+          "name": "name",
+          "type": "ESTRING"
+        }
+      ]
+    },
+    "trade_route_info": {
+      "id": 249,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "city",
+          "type": "CITY"
+        },
+        {
+          "name": "index",
+          "type": "UINT8"
+        },
+        {
+          "name": "partner",
+          "type": "CITY"
+        },
+        {
+          "name": "value",
+          "type": "UINT16"
+        },
+        {
+          "name": "direction",
+          "type": "RDIR"
+        },
+        {
+          "name": "goods",
+          "type": "GOODS"
+        }
+      ]
+    },
+    "city_sell": {
+      "id": 33,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "city_id",
+          "type": "CITY"
+        },
+        {
+          "name": "build_id",
+          "type": "UINT8"
+        }
+      ]
+    },
+    "city_buy": {
+      "id": 34,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "city_id",
+          "type": "CITY"
+        }
+      ]
+    },
+    "city_change": {
+      "id": 35,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "city_id",
+          "type": "CITY"
+        },
+        {
+          "name": "production_kind",
+          "type": "UINT8"
+        },
+        {
+          "name": "production_value",
+          "type": "UINT8"
+        }
+      ]
+    },
+    "city_worklist": {
+      "id": 36,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "city_id",
+          "type": "CITY"
+        },
+        {
+          "name": "worklist",
+          "type": "WORKLIST"
+        }
+      ]
+    },
+    "city_make_specialist": {
+      "id": 37,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "city_id",
+          "type": "CITY"
+        },
+        {
+          "name": "tile_id",
+          "type": "TILE"
+        }
+      ]
+    },
+    "city_make_worker": {
+      "id": 38,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "city_id",
+          "type": "CITY"
+        },
+        {
+          "name": "tile_id",
+          "type": "TILE"
+        }
+      ]
+    },
+    "city_change_specialist": {
+      "id": 39,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "city_id",
+          "type": "CITY"
+        },
+        {
+          "name": "from",
+          "type": "SPECIALIST"
+        },
+        {
+          "name": "to",
+          "type": "SPECIALIST"
+        }
+      ]
+    },
+    "city_rename": {
+      "id": 40,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "city_id",
+          "type": "CITY"
+        },
+        {
+          "name": "name",
+          "type": "ESTRING"
+        }
+      ]
+    },
+    "city_options_req": {
+      "id": 41,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "city_id",
+          "type": "CITY"
+        },
+        {
+          "name": "options",
+          "type": "BV_CITY_OPTIONS"
+        }
+      ]
+    },
+    "city_refresh": {
+      "id": 42,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "city_id",
+          "type": "CITY"
+        }
+      ]
+    },
+    "city_name_suggestion_req": {
+      "id": 43,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "unit_id",
+          "type": "UNIT"
+        }
+      ]
+    },
+    "city_name_suggestion_info": {
+      "id": 44,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "unit_id",
+          "type": "UNIT"
+        },
+        {
+          "name": "name",
+          "type": "ESTRING"
+        }
+      ]
+    },
+    "city_sabotage_list": {
+      "id": 45,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "actor_id",
+          "type": "UNIT"
+        },
+        {
+          "name": "city_id",
+          "type": "CITY"
+        },
+        {
+          "name": "improvements",
+          "type": "BV_IMPRS"
+        },
+        {
+          "name": "act_id",
+          "type": "ACTION_ID"
+        },
+        {
+          "name": "request_kind",
+          "type": "UINT8"
+        }
+      ]
+    },
+    "city_rally_point": {
+      "id": 138,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "id",
+          "type": "CITY"
+        },
+        {
+          "name": "length",
+          "type": "UINT16"
+        },
+        {
+          "name": "persistent",
+          "type": "BOOL"
+        },
+        {
+          "name": "vigilant",
+          "type": "BOOL"
+        },
+        {
+          "name": "orders",
+          "type": "UNIT_ORDER"
+        }
+      ]
+    },
+    "worker_task": {
+      "id": 241,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "city_id",
+          "type": "CITY"
+        },
+        {
+          "name": "tile_id",
+          "type": "TILE"
+        },
+        {
+          "name": "activity",
+          "type": "ACTIVITY"
+        },
+        {
+          "name": "tgt",
+          "type": "EXTRA"
+        },
+        {
+          "name": "want",
+          "type": "UINT16"
+        }
+      ]
+    },
+    "player_remove": {
+      "id": 50,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "playerno",
+          "type": "PLAYER"
+        }
+      ]
+    },
+    "player_info": {
+      "id": 51,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "playerno",
+          "type": "PLAYER"
+        },
+        {
+          "name": "name",
+          "type": "STRING"
+        },
+        {
+          "name": "username",
+          "type": "STRING"
+        },
+        {
+          "name": "unassigned_user",
+          "type": "BOOL"
+        },
+        {
+          "name": "score",
+          "type": "SCORE"
+        },
+        {
+          "name": "is_male",
+          "type": "BOOL"
+        },
+        {
+          "name": "was_created",
+          "type": "BOOL"
+        },
+        {
+          "name": "government",
+          "type": "GOVERNMENT"
+        },
+        {
+          "name": "target_government",
+          "type": "GOVERNMENT"
+        },
+        {
+          "name": "real_embassy",
+          "type": "BV_PLAYER"
+        },
+        {
+          "name": "mood",
+          "type": "MOOD"
+        },
+        {
+          "name": "style",
+          "type": "UINT8"
+        },
+        {
+          "name": "music_style",
+          "type": "SINT8"
+        },
+        {
+          "name": "nation",
+          "type": "NATION"
+        },
+        {
+          "name": "team",
+          "type": "TEAM"
+        },
+        {
+          "name": "is_ready",
+          "type": "BOOL"
+        },
+        {
+          "name": "phase_done",
+          "type": "BOOL"
+        },
+        {
+          "name": "nturns_idle",
+          "type": "TURN"
+        },
+        {
+          "name": "turns_alive",
+          "type": "TURN"
+        },
+        {
+          "name": "is_alive",
+          "type": "BOOL"
+        },
+        {
+          "name": "autoselect_weight",
+          "type": "SINT16"
+        },
+        {
+          "name": "gold",
+          "type": "GOLD"
+        },
+        {
+          "name": "tax",
+          "type": "PERCENT"
+        },
+        {
+          "name": "science",
+          "type": "PERCENT"
+        },
+        {
+          "name": "luxury",
+          "type": "PERCENT"
+        },
+        {
+          "name": "infrapoints",
+          "type": "UINT32"
+        },
+        {
+          "name": "tech_upkeep",
+          "type": "UINT16"
+        },
+        {
+          "name": "science_cost",
+          "type": "UINT16"
+        },
+        {
+          "name": "is_connected",
+          "type": "BOOL"
+        },
+        {
+          "name": "revolution_finishes",
+          "type": "TURN"
+        },
+        {
+          "name": "ai_skill_level",
+          "type": "AI_LEVEL"
+        },
+        {
+          "name": "barbarian_type",
+          "type": "BARBARIAN_TYPE"
+        },
+        {
+          "name": "gives_shared_vision",
+          "type": "BV_PLAYER"
+        },
+        {
+          "name": "gives_shared_tiles",
+          "type": "BV_PLAYER"
+        },
+        {
+          "name": "history",
+          "type": "UINT32"
+        },
+        {
+          "name": "culture",
+          "type": "UINT32"
+        },
+        {
+          "name": "love",
+          "type": "SINT16"
+        },
+        {
+          "name": "color_valid",
+          "type": "BOOL"
+        },
+        {
+          "name": "color_changeable",
+          "type": "BOOL"
+        },
+        {
+          "name": "color_red",
+          "type": "UINT8"
+        },
+        {
+          "name": "color_green",
+          "type": "UINT8"
+        },
+        {
+          "name": "color_blue",
+          "type": "UINT8"
+        },
+        {
+          "name": "flags",
+          "type": "BV_PLR_FLAGS"
+        },
+        {
+          "name": "wonders",
+          "type": "CITYSPE"
+        },
+        {
+          "name": "multip_count",
+          "type": "UINT8"
+        },
+        {
+          "name": "multiplier",
+          "type": "SINT32"
+        },
+        {
+          "name": "multiplier_target",
+          "type": "SINT32"
+        },
+        {
+          "name": "multiplier_changed",
+          "type": "TURN"
+        }
+      ]
+    },
+    "player_phase_done": {
+      "id": 52,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "turn",
+          "type": "TURN"
+        }
+      ]
+    },
+    "player_rates": {
+      "id": 53,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "tax",
+          "type": "PERCENT"
+        },
+        {
+          "name": "luxury",
+          "type": "PERCENT"
+        },
+        {
+          "name": "science",
+          "type": "PERCENT"
+        }
+      ]
+    },
+    "player_change_government": {
+      "id": 54,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "government",
+          "type": "GOVERNMENT"
+        }
+      ]
+    },
+    "player_place_infra": {
+      "id": 61,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "tile",
+          "type": "TILE"
+        },
+        {
+          "name": "extra",
+          "type": "EXTRA"
+        }
+      ]
+    },
+    "player_attribute_block": {
+      "id": 57,
+      "client_to_server": true,
+      "fields": []
+    },
+    "player_attribute_chunk": {
+      "id": 58,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "offset",
+          "type": "UINT32"
+        },
+        {
+          "name": "total_length",
+          "type": "UINT32"
+        },
+        {
+          "name": "chunk_length",
+          "type": "UINT16"
+        },
+        {
+          "name": "data",
+          "type": "MEMORY"
+        }
+      ]
+    },
+    "player_diplstate": {
+      "id": 59,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "diplstate_id",
+          "type": "UINT32"
+        },
+        {
+          "name": "plr1",
+          "type": "PLAYER"
+        },
+        {
+          "name": "plr2",
+          "type": "PLAYER"
+        },
+        {
+          "name": "type",
+          "type": "DIPLSTATE_TYPE"
+        },
+        {
+          "name": "turns_left",
+          "type": "UINT16"
+        },
+        {
+          "name": "has_reason_to_cancel",
+          "type": "UINT8"
+        },
+        {
+          "name": "contact_turns_left",
+          "type": "UINT16"
+        }
+      ]
+    },
+    "player_multiplier": {
+      "id": 242,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "count",
+          "type": "UINT16"
+        },
+        {
+          "name": "multipliers",
+          "type": "SINT32"
+        }
+      ]
+    },
+    "research_info": {
+      "id": 60,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "RESEARCH"
+        },
+        {
+          "name": "techs_researched",
+          "type": "UINT32"
+        },
+        {
+          "name": "future_tech",
+          "type": "UINT16"
+        },
+        {
+          "name": "researching",
+          "type": "TECH"
+        },
+        {
+          "name": "researching_cost",
+          "type": "UINT32"
+        },
+        {
+          "name": "bulbs_researched",
+          "type": "UINT32"
+        },
+        {
+          "name": "tech_goal",
+          "type": "TECH"
+        },
+        {
+          "name": "total_bulbs_prod",
+          "type": "SINT32"
+        },
+        {
+          "name": "inventions",
+          "type": "STRING"
+        }
+      ]
+    },
+    "unknown_research": {
+      "id": 66,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "RESEARCH"
+        }
+      ]
+    },
+    "player_research": {
+      "id": 55,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "tech",
+          "type": "TECH"
+        }
+      ]
+    },
+    "player_tech_goal": {
+      "id": 56,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "tech",
+          "type": "TECH"
+        }
+      ]
+    },
+    "unit_remove": {
+      "id": 62,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "unit_id",
+          "type": "UNIT"
+        }
+      ]
+    },
+    "unit_info": {
+      "id": 63,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UNIT"
+        },
+        {
+          "name": "owner",
+          "type": "PLAYER"
+        },
+        {
+          "name": "nationality",
+          "type": "PLAYER"
+        },
+        {
+          "name": "tile",
+          "type": "TILE"
+        },
+        {
+          "name": "facing",
+          "type": "DIRECTION"
+        },
+        {
+          "name": "homecity",
+          "type": "CITY"
+        },
+        {
+          "name": "upkeep",
+          "type": "UINT8"
+        },
+        {
+          "name": "veteran",
+          "type": "UINT8"
+        },
+        {
+          "name": "ssa_controller",
+          "type": "SERVER_SIDE_AGENT"
+        },
+        {
+          "name": "paradropped",
+          "type": "BOOL"
+        },
+        {
+          "name": "occupied",
+          "type": "BOOL"
+        },
+        {
+          "name": "transported",
+          "type": "BOOL"
+        },
+        {
+          "name": "done_moving",
+          "type": "BOOL"
+        },
+        {
+          "name": "stay",
+          "type": "BOOL"
+        },
+        {
+          "name": "birth_turn",
+          "type": "TURN"
+        },
+        {
+          "name": "current_form_turn",
+          "type": "TURN"
+        },
+        {
+          "name": "type",
+          "type": "UNIT_TYPE"
+        },
+        {
+          "name": "transported_by",
+          "type": "UNIT"
+        },
+        {
+          "name": "carrying",
+          "type": "SINT8"
+        },
+        {
+          "name": "movesleft",
+          "type": "MOVEFRAGS"
+        },
+        {
+          "name": "hp",
+          "type": "UINT8"
+        },
+        {
+          "name": "fuel",
+          "type": "UINT8"
+        },
+        {
+          "name": "activity_count",
+          "type": "UINT16"
+        },
+        {
+          "name": "changed_from_count",
+          "type": "UINT16"
+        },
+        {
+          "name": "goto_tile",
+          "type": "TILE"
+        },
+        {
+          "name": "activity",
+          "type": "ACTIVITY"
+        },
+        {
+          "name": "activity_tgt",
+          "type": "EXTRA"
+        },
+        {
+          "name": "changed_from",
+          "type": "ACTIVITY"
+        },
+        {
+          "name": "changed_from_tgt",
+          "type": "EXTRA"
+        },
+        {
+          "name": "battlegroup",
+          "type": "SINT8"
+        },
+        {
+          "name": "has_orders",
+          "type": "BOOL"
+        },
+        {
+          "name": "orders_length",
+          "type": "UINT16"
+        },
+        {
+          "name": "orders_index",
+          "type": "UINT16"
+        },
+        {
+          "name": "orders_repeat",
+          "type": "BOOL"
+        },
+        {
+          "name": "orders_vigilant",
+          "type": "BOOL"
+        },
+        {
+          "name": "orders",
+          "type": "UNIT_ORDER"
+        },
+        {
+          "name": "action_decision_want",
+          "type": "ACTION_DECISION"
+        },
+        {
+          "name": "action_decision_tile",
+          "type": "TILE"
+        }
+      ]
+    },
+    "unit_short_info": {
+      "id": 64,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UNIT"
+        },
+        {
+          "name": "owner",
+          "type": "PLAYER"
+        },
+        {
+          "name": "tile",
+          "type": "TILE"
+        },
+        {
+          "name": "facing",
+          "type": "DIRECTION"
+        },
+        {
+          "name": "type",
+          "type": "UNIT_TYPE"
+        },
+        {
+          "name": "veteran",
+          "type": "UINT8"
+        },
+        {
+          "name": "occupied",
+          "type": "BOOL"
+        },
+        {
+          "name": "transported",
+          "type": "BOOL"
+        },
+        {
+          "name": "hp",
+          "type": "UINT8"
+        },
+        {
+          "name": "activity",
+          "type": "UINT8"
+        },
+        {
+          "name": "activity_tgt",
+          "type": "EXTRA"
+        },
+        {
+          "name": "transported_by",
+          "type": "UNIT"
+        },
+        {
+          "name": "packet_use",
+          "type": "UINT8"
+        },
+        {
+          "name": "info_city_id",
+          "type": "CITY"
+        }
+      ]
+    },
+    "unit_combat_info": {
+      "id": 65,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "attacker_unit_id",
+          "type": "UNIT"
+        },
+        {
+          "name": "defender_unit_id",
+          "type": "UNIT"
+        },
+        {
+          "name": "attacker_hp",
+          "type": "HP"
+        },
+        {
+          "name": "defender_hp",
+          "type": "HP"
+        },
+        {
+          "name": "make_att_veteran",
+          "type": "BOOL"
+        },
+        {
+          "name": "make_def_veteran",
+          "type": "BOOL"
+        }
+      ]
+    },
+    "unit_sscs_set": {
+      "id": 71,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "unit_id",
+          "type": "UNIT"
+        },
+        {
+          "name": "type",
+          "type": "UNIT_DATA_TYPE"
+        },
+        {
+          "name": "value",
+          "type": "SINT32"
+        }
+      ]
+    },
+    "unit_orders": {
+      "id": 73,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "unit_id",
+          "type": "UNIT"
+        },
+        {
+          "name": "src_tile",
+          "type": "TILE"
+        },
+        {
+          "name": "length",
+          "type": "UINT16"
+        },
+        {
+          "name": "repeat",
+          "type": "BOOL"
+        },
+        {
+          "name": "vigilant",
+          "type": "BOOL"
+        },
+        {
+          "name": "orders",
+          "type": "UNIT_ORDER"
+        },
+        {
+          "name": "dest_tile",
+          "type": "TILE"
+        }
+      ]
+    },
+    "unit_server_side_agent_set": {
+      "id": 74,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "unit_id",
+          "type": "UNIT"
+        },
+        {
+          "name": "agent",
+          "type": "SERVER_SIDE_AGENT"
+        }
+      ]
+    },
+    "unit_action_query": {
+      "id": 82,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "actor_id",
+          "type": "UNIT"
+        },
+        {
+          "name": "target_id",
+          "type": "ACTION_TGT"
+        },
+        {
+          "name": "action_type",
+          "type": "ACTION_ID"
+        },
+        {
+          "name": "request_kind",
+          "type": "UINT8"
+        }
+      ]
+    },
+    "unit_type_upgrade": {
+      "id": 83,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "type",
+          "type": "UNIT_TYPE"
+        }
+      ]
+    },
+    "unit_do_action": {
+      "id": 84,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "actor_id",
+          "type": "UNIT"
+        },
+        {
+          "name": "target_id",
+          "type": "ACTION_TGT"
+        },
+        {
+          "name": "sub_tgt_id",
+          "type": "ACTION_SUB_TGT"
+        },
+        {
+          "name": "name",
+          "type": "ESTRING"
+        },
+        {
+          "name": "action_type",
+          "type": "ACTION_ID"
+        }
+      ]
+    },
+    "unit_action_answer": {
+      "id": 85,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "actor_id",
+          "type": "UNIT"
+        },
+        {
+          "name": "target_id",
+          "type": "ACTION_TGT"
+        },
+        {
+          "name": "cost",
+          "type": "GOLD"
+        },
+        {
+          "name": "action_type",
+          "type": "ACTION_ID"
+        },
+        {
+          "name": "request_kind",
+          "type": "UINT8"
+        }
+      ]
+    },
+    "unit_get_actions": {
+      "id": 87,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "actor_unit_id",
+          "type": "UNIT"
+        },
+        {
+          "name": "target_unit_id",
+          "type": "UNIT"
+        },
+        {
+          "name": "target_tile_id",
+          "type": "TILE"
+        },
+        {
+          "name": "target_extra_id",
+          "type": "EXTRA"
+        },
+        {
+          "name": "request_kind",
+          "type": "UINT8"
+        }
+      ]
+    },
+    "unit_actions": {
+      "id": 90,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "actor_unit_id",
+          "type": "UNIT"
+        },
+        {
+          "name": "target_unit_id",
+          "type": "UNIT"
+        },
+        {
+          "name": "target_city_id",
+          "type": "CITY"
+        },
+        {
+          "name": "target_tile_id",
+          "type": "TILE"
+        },
+        {
+          "name": "target_extra_id",
+          "type": "EXTRA"
+        },
+        {
+          "name": "request_kind",
+          "type": "UINT8"
+        },
+        {
+          "name": "action_probabilities",
+          "type": "ACT_PROB"
+        }
+      ]
+    },
+    "unit_change_activity": {
+      "id": 222,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "unit_id",
+          "type": "UNIT"
+        },
+        {
+          "name": "activity",
+          "type": "ACTIVITY"
+        },
+        {
+          "name": "target",
+          "type": "EXTRA"
+        }
+      ]
+    },
+    "diplomacy_init_meeting_req": {
+      "id": 95,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "counterpart",
+          "type": "PLAYER"
+        }
+      ]
+    },
+    "diplomacy_init_meeting": {
+      "id": 96,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "counterpart",
+          "type": "PLAYER"
+        },
+        {
+          "name": "initiated_from",
+          "type": "PLAYER"
+        }
+      ]
+    },
+    "diplomacy_cancel_meeting_req": {
+      "id": 97,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "counterpart",
+          "type": "PLAYER"
+        }
+      ]
+    },
+    "diplomacy_cancel_meeting": {
+      "id": 98,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "counterpart",
+          "type": "PLAYER"
+        },
+        {
+          "name": "initiated_from",
+          "type": "PLAYER"
+        }
+      ]
+    },
+    "diplomacy_create_clause_req": {
+      "id": 99,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "counterpart",
+          "type": "PLAYER"
+        },
+        {
+          "name": "giver",
+          "type": "PLAYER"
+        },
+        {
+          "name": "type",
+          "type": "CLAUSE"
+        },
+        {
+          "name": "value",
+          "type": "UINT32"
+        }
+      ]
+    },
+    "diplomacy_create_clause": {
+      "id": 100,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "counterpart",
+          "type": "PLAYER"
+        },
+        {
+          "name": "giver",
+          "type": "PLAYER"
+        },
+        {
+          "name": "type",
+          "type": "CLAUSE"
+        },
+        {
+          "name": "value",
+          "type": "UINT32"
+        }
+      ]
+    },
+    "diplomacy_remove_clause_req": {
+      "id": 101,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "counterpart",
+          "type": "PLAYER"
+        },
+        {
+          "name": "giver",
+          "type": "PLAYER"
+        },
+        {
+          "name": "type",
+          "type": "CLAUSE"
+        },
+        {
+          "name": "value",
+          "type": "UINT32"
+        }
+      ]
+    },
+    "diplomacy_remove_clause": {
+      "id": 102,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "counterpart",
+          "type": "PLAYER"
+        },
+        {
+          "name": "giver",
+          "type": "PLAYER"
+        },
+        {
+          "name": "type",
+          "type": "CLAUSE"
+        },
+        {
+          "name": "value",
+          "type": "UINT32"
+        }
+      ]
+    },
+    "diplomacy_accept_treaty_req": {
+      "id": 103,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "counterpart",
+          "type": "PLAYER"
+        }
+      ]
+    },
+    "diplomacy_accept_treaty": {
+      "id": 104,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "counterpart",
+          "type": "PLAYER"
+        },
+        {
+          "name": "I_accepted",
+          "type": "BOOL"
+        },
+        {
+          "name": "other_accepted",
+          "type": "BOOL"
+        }
+      ]
+    },
+    "diplomacy_cancel_pact": {
+      "id": 105,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "other_player_id",
+          "type": "PLAYER"
+        },
+        {
+          "name": "clause",
+          "type": "CLAUSE"
+        }
+      ]
+    },
+    "page_msg": {
+      "id": 110,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "caption",
+          "type": "STRING"
+        },
+        {
+          "name": "headline",
+          "type": "STRING"
+        },
+        {
+          "name": "event",
+          "type": "EVENT"
+        },
+        {
+          "name": "len",
+          "type": "UINT32"
+        },
+        {
+          "name": "parts",
+          "type": "UINT16"
+        }
+      ]
+    },
+    "page_msg_part": {
+      "id": 250,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "lines",
+          "type": "STRING"
+        }
+      ]
+    },
+    "report_req": {
+      "id": 111,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "type",
+          "type": "REPORT_TYPE"
+        }
+      ]
+    },
+    "conn_info": {
+      "id": 115,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "CONNECTION"
+        },
+        {
+          "name": "used",
+          "type": "BOOL"
+        },
+        {
+          "name": "established",
+          "type": "BOOL"
+        },
+        {
+          "name": "observer",
+          "type": "BOOL"
+        },
+        {
+          "name": "player_num",
+          "type": "PLAYER"
+        },
+        {
+          "name": "access_level",
+          "type": "CMDLEVEL"
+        },
+        {
+          "name": "username",
+          "type": "STRING"
+        },
+        {
+          "name": "addr",
+          "type": "STRING"
+        },
+        {
+          "name": "capability",
+          "type": "STRING"
+        }
+      ]
+    },
+    "conn_ping_info": {
+      "id": 116,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "connections",
+          "type": "UINT16"
+        },
+        {
+          "name": "conn_id",
+          "type": "CONNECTION"
+        },
+        {
+          "name": "ping_time",
+          "type": "SFLOAT10x6"
+        }
+      ]
+    },
+    "conn_ping": {
+      "id": 88,
+      "client_to_server": false,
+      "fields": []
+    },
+    "conn_pong": {
+      "id": 89,
+      "client_to_server": true,
+      "fields": []
+    },
+    "client_heartbeat": {
+      "id": 254,
+      "client_to_server": true,
+      "fields": []
+    },
+    "client_info": {
+      "id": 119,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "gui",
+          "type": "GUI_TYPE"
+        },
+        {
+          "name": "emerg_version",
+          "type": "UINT32"
+        },
+        {
+          "name": "distribution",
+          "type": "STRING"
+        }
+      ]
+    },
+    "end_phase": {
+      "id": 125,
+      "client_to_server": false,
+      "fields": []
+    },
+    "start_phase": {
+      "id": 126,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "phase",
+          "type": "PHASE"
+        }
+      ]
+    },
+    "new_year": {
+      "id": 127,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "year",
+          "type": "YEAR"
+        },
+        {
+          "name": "fragments",
+          "type": "UINT16"
+        },
+        {
+          "name": "turn",
+          "type": "TURN"
+        }
+      ]
+    },
+    "begin_turn": {
+      "id": 128,
+      "client_to_server": false,
+      "fields": []
+    },
+    "end_turn": {
+      "id": 129,
+      "client_to_server": false,
+      "fields": []
+    },
+    "freeze_client": {
+      "id": 130,
+      "client_to_server": false,
+      "fields": []
+    },
+    "thaw_client": {
+      "id": 131,
+      "client_to_server": false,
+      "fields": []
+    },
+    "spaceship_launch": {
+      "id": 135,
+      "client_to_server": true,
+      "fields": []
+    },
+    "spaceship_place": {
+      "id": 136,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "type",
+          "type": "PLACE_TYPE"
+        },
+        {
+          "name": "num",
+          "type": "UINT8"
+        }
+      ]
+    },
+    "spaceship_info": {
+      "id": 137,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "player_num",
+          "type": "PLAYER"
+        },
+        {
+          "name": "sship_state",
+          "type": "UINT8"
+        },
+        {
+          "name": "structurals",
+          "type": "UINT8"
+        },
+        {
+          "name": "components",
+          "type": "UINT8"
+        },
+        {
+          "name": "modules",
+          "type": "UINT8"
+        },
+        {
+          "name": "fuel",
+          "type": "UINT8"
+        },
+        {
+          "name": "propulsion",
+          "type": "UINT8"
+        },
+        {
+          "name": "habitation",
+          "type": "UINT8"
+        },
+        {
+          "name": "life_support",
+          "type": "UINT8"
+        },
+        {
+          "name": "solar_panels",
+          "type": "UINT8"
+        },
+        {
+          "name": "launch_year",
+          "type": "YEAR"
+        },
+        {
+          "name": "population",
+          "type": "UINT32"
+        },
+        {
+          "name": "mass",
+          "type": "UINT32"
+        },
+        {
+          "name": "structure",
+          "type": "BV_SPACESHIP_STRUCT"
+        },
+        {
+          "name": "support_rate",
+          "type": "UFLOAT"
+        },
+        {
+          "name": "energy_rate",
+          "type": "UFLOAT"
+        },
+        {
+          "name": "success_rate",
+          "type": "UFLOAT"
+        },
+        {
+          "name": "travel_time",
+          "type": "UFLOAT"
+        }
+      ]
+    },
+    "ruleset_unit": {
+      "id": 140,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UNIT_TYPE"
+        },
+        {
+          "name": "name",
+          "type": "STRING"
+        },
+        {
+          "name": "rule_name",
+          "type": "STRING"
+        },
+        {
+          "name": "graphic_str",
+          "type": "STRING"
+        },
+        {
+          "name": "graphic_alt",
+          "type": "STRING"
+        },
+        {
+          "name": "graphic_alt2",
+          "type": "STRING"
+        },
+        {
+          "name": "sound_move",
+          "type": "STRING"
+        },
+        {
+          "name": "sound_move_alt",
+          "type": "STRING"
+        },
+        {
+          "name": "sound_fight",
+          "type": "STRING"
+        },
+        {
+          "name": "sound_fight_alt",
+          "type": "STRING"
+        },
+        {
+          "name": "unit_class_id",
+          "type": "UINT8"
+        },
+        {
+          "name": "build_cost",
+          "type": "UINT16"
+        },
+        {
+          "name": "pop_cost",
+          "type": "UINT8"
+        },
+        {
+          "name": "attack_strength",
+          "type": "UINT8"
+        },
+        {
+          "name": "defense_strength",
+          "type": "UINT8"
+        },
+        {
+          "name": "move_rate",
+          "type": "MOVEFRAGS"
+        },
+        {
+          "name": "build_reqs",
+          "type": "REQUIREMENT"
+        },
+        {
+          "name": "vision_radius_sq",
+          "type": "UINT16"
+        },
+        {
+          "name": "transport_capacity",
+          "type": "UINT8"
+        },
+        {
+          "name": "hp",
+          "type": "UINT8"
+        },
+        {
+          "name": "firepower",
+          "type": "UINT8"
+        },
+        {
+          "name": "obsoleted_by",
+          "type": "UINT8"
+        },
+        {
+          "name": "converted_to",
+          "type": "UINT8"
+        },
+        {
+          "name": "convert_time",
+          "type": "UINT8"
+        },
+        {
+          "name": "fuel",
+          "type": "UINT8"
+        },
+        {
+          "name": "happy_cost",
+          "type": "UINT8"
+        },
+        {
+          "name": "upkeep",
+          "type": "UINT8"
+        },
+        {
+          "name": "paratroopers_range",
+          "type": "UINT16"
+        },
+        {
+          "name": "veteran_levels",
+          "type": "UINT8"
+        },
+        {
+          "name": "veteran_name",
+          "type": "STRING"
+        },
+        {
+          "name": "power_fact",
+          "type": "UINT16"
+        },
+        {
+          "name": "move_bonus",
+          "type": "MOVEFRAGS"
+        },
+        {
+          "name": "base_raise_chance",
+          "type": "UINT8"
+        },
+        {
+          "name": "work_raise_chance",
+          "type": "UINT8"
+        },
+        {
+          "name": "bombard_rate",
+          "type": "UINT8"
+        },
+        {
+          "name": "city_size",
+          "type": "UINT8"
+        },
+        {
+          "name": "city_slots",
+          "type": "UINT8"
+        },
+        {
+          "name": "tp_defense",
+          "type": "TRANSP_DEF_TYPE"
+        },
+        {
+          "name": "cargo",
+          "type": "BV_UNIT_CLASSES"
+        },
+        {
+          "name": "targets",
+          "type": "BV_UNIT_CLASSES"
+        },
+        {
+          "name": "embarks",
+          "type": "BV_UNIT_CLASSES"
+        },
+        {
+          "name": "disembarks",
+          "type": "BV_UNIT_CLASSES"
+        },
+        {
+          "name": "vlayer",
+          "type": "VLAYER"
+        },
+        {
+          "name": "helptext",
+          "type": "STRVEC"
+        },
+        {
+          "name": "flags",
+          "type": "BV_UTYPE_FLAGS"
+        },
+        {
+          "name": "roles",
+          "type": "BV_UTYPE_ROLES"
+        },
+        {
+          "name": "worker",
+          "type": "BOOL"
+        }
+      ]
+    },
+    "ruleset_unit_bonus": {
+      "id": 228,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "unit",
+          "type": "UNIT_TYPE"
+        },
+        {
+          "name": "flag",
+          "type": "UTYF"
+        },
+        {
+          "name": "type",
+          "type": "CBONUS_TYPE"
+        },
+        {
+          "name": "value",
+          "type": "SINT16"
+        },
+        {
+          "name": "quiet",
+          "type": "BOOL"
+        }
+      ]
+    },
+    "ruleset_unit_flag": {
+      "id": 229,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UINT8"
+        },
+        {
+          "name": "name",
+          "type": "STRING"
+        },
+        {
+          "name": "helptxt",
+          "type": "STRING"
+        }
+      ]
+    },
+    "ruleset_unit_class_flag": {
+      "id": 230,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UINT8"
+        },
+        {
+          "name": "name",
+          "type": "STRING"
+        },
+        {
+          "name": "helptxt",
+          "type": "STRING"
+        }
+      ]
+    },
+    "ruleset_game": {
+      "id": 141,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "default_specialist",
+          "type": "UINT8"
+        },
+        {
+          "name": "global_init_techs_count",
+          "type": "UINT8"
+        },
+        {
+          "name": "global_init_techs",
+          "type": "TECH"
+        },
+        {
+          "name": "global_init_buildings_count",
+          "type": "UINT8"
+        },
+        {
+          "name": "global_init_buildings",
+          "type": "IMPROVEMENT"
+        },
+        {
+          "name": "veteran_levels",
+          "type": "UINT8"
+        },
+        {
+          "name": "veteran_name",
+          "type": "STRING"
+        },
+        {
+          "name": "power_fact",
+          "type": "UINT16"
+        },
+        {
+          "name": "move_bonus",
+          "type": "MOVEFRAGS"
+        },
+        {
+          "name": "base_raise_chance",
+          "type": "UINT8"
+        },
+        {
+          "name": "work_raise_chance",
+          "type": "UINT8"
+        },
+        {
+          "name": "background_red",
+          "type": "UINT8"
+        },
+        {
+          "name": "background_green",
+          "type": "UINT8"
+        },
+        {
+          "name": "background_blue",
+          "type": "UINT8"
+        }
+      ]
+    },
+    "ruleset_specialist": {
+      "id": 142,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "SPECIALIST"
+        },
+        {
+          "name": "plural_name",
+          "type": "STRING"
+        },
+        {
+          "name": "rule_name",
+          "type": "STRING"
+        },
+        {
+          "name": "short_name",
+          "type": "STRING"
+        },
+        {
+          "name": "graphic_str",
+          "type": "STRING"
+        },
+        {
+          "name": "graphic_alt",
+          "type": "STRING"
+        },
+        {
+          "name": "reqs",
+          "type": "REQUIREMENT"
+        },
+        {
+          "name": "helptext",
+          "type": "STRVEC"
+        }
+      ]
+    },
+    "ruleset_government_ruler_title": {
+      "id": 143,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "gov",
+          "type": "GOVERNMENT"
+        },
+        {
+          "name": "nation",
+          "type": "NATION"
+        },
+        {
+          "name": "male_title",
+          "type": "STRING"
+        },
+        {
+          "name": "female_title",
+          "type": "STRING"
+        }
+      ]
+    },
+    "ruleset_tech": {
+      "id": 144,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "TECH"
+        },
+        {
+          "name": "root_req",
+          "type": "TECH"
+        },
+        {
+          "name": "research_reqs",
+          "type": "REQUIREMENT"
+        },
+        {
+          "name": "tclass",
+          "type": "UINT8"
+        },
+        {
+          "name": "removed",
+          "type": "BOOL"
+        },
+        {
+          "name": "flags",
+          "type": "BV_TECH_FLAGS"
+        },
+        {
+          "name": "cost",
+          "type": "UFLOAT10x3"
+        },
+        {
+          "name": "num_reqs",
+          "type": "UINT32"
+        },
+        {
+          "name": "name",
+          "type": "STRING"
+        },
+        {
+          "name": "rule_name",
+          "type": "STRING"
+        },
+        {
+          "name": "helptext",
+          "type": "STRVEC"
+        },
+        {
+          "name": "graphic_str",
+          "type": "STRING"
+        },
+        {
+          "name": "graphic_alt",
+          "type": "STRING"
+        }
+      ]
+    },
+    "ruleset_tech_class": {
+      "id": 9,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UINT16"
+        },
+        {
+          "name": "name",
+          "type": "STRING"
+        },
+        {
+          "name": "rule_name",
+          "type": "STRING"
+        },
+        {
+          "name": "cost_pct",
+          "type": "UINT16"
+        }
+      ]
+    },
+    "ruleset_tech_flag": {
+      "id": 234,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UINT8"
+        },
+        {
+          "name": "name",
+          "type": "STRING"
+        },
+        {
+          "name": "helptxt",
+          "type": "STRING"
+        }
+      ]
+    },
+    "ruleset_government": {
+      "id": 145,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "GOVERNMENT"
+        },
+        {
+          "name": "reqs",
+          "type": "REQUIREMENT"
+        },
+        {
+          "name": "name",
+          "type": "STRING"
+        },
+        {
+          "name": "rule_name",
+          "type": "STRING"
+        },
+        {
+          "name": "graphic_str",
+          "type": "STRING"
+        },
+        {
+          "name": "graphic_alt",
+          "type": "STRING"
+        },
+        {
+          "name": "sound_str",
+          "type": "STRING"
+        },
+        {
+          "name": "sound_alt",
+          "type": "STRING"
+        },
+        {
+          "name": "sound_alt2",
+          "type": "STRING"
+        },
+        {
+          "name": "helptext",
+          "type": "STRVEC"
+        }
+      ]
+    },
+    "ruleset_terrain_control": {
+      "id": 146,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "ocean_reclaim_requirement_pct",
+          "type": "UINT8"
+        },
+        {
+          "name": "land_channel_requirement_pct",
+          "type": "UINT8"
+        },
+        {
+          "name": "terrain_thaw_requirement_pct",
+          "type": "UINT8"
+        },
+        {
+          "name": "terrain_freeze_requirement_pct",
+          "type": "UINT8"
+        },
+        {
+          "name": "lake_max_size",
+          "type": "UINT8"
+        },
+        {
+          "name": "min_start_native_area",
+          "type": "UINT8"
+        },
+        {
+          "name": "move_fragments",
+          "type": "MOVEFRAGS"
+        },
+        {
+          "name": "igter_cost",
+          "type": "MOVEFRAGS"
+        },
+        {
+          "name": "pythagorean_diagonal",
+          "type": "BOOL"
+        },
+        {
+          "name": "infrapoints",
+          "type": "BOOL"
+        },
+        {
+          "name": "gui_type_base0",
+          "type": "STRING"
+        },
+        {
+          "name": "gui_type_base1",
+          "type": "STRING"
+        }
+      ]
+    },
+    "rulesets_ready": {
+      "id": 225,
+      "client_to_server": false,
+      "fields": []
+    },
+    "ruleset_nation_sets": {
+      "id": 236,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "nsets",
+          "type": "UINT8"
+        },
+        {
+          "name": "names",
+          "type": "STRING"
+        },
+        {
+          "name": "rule_names",
+          "type": "STRING"
+        },
+        {
+          "name": "descriptions",
+          "type": "STRING"
+        }
+      ]
+    },
+    "ruleset_nation_groups": {
+      "id": 147,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "ngroups",
+          "type": "UINT8"
+        },
+        {
+          "name": "groups",
+          "type": "STRING"
+        },
+        {
+          "name": "hidden",
+          "type": "BOOL"
+        }
+      ]
+    },
+    "ruleset_nation": {
+      "id": 148,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "NATION"
+        },
+        {
+          "name": "translation_domain",
+          "type": "STRING"
+        },
+        {
+          "name": "adjective",
+          "type": "STRING"
+        },
+        {
+          "name": "rule_name",
+          "type": "STRING"
+        },
+        {
+          "name": "noun_plural",
+          "type": "STRING"
+        },
+        {
+          "name": "graphic_str",
+          "type": "STRING"
+        },
+        {
+          "name": "graphic_alt",
+          "type": "STRING"
+        },
+        {
+          "name": "legend",
+          "type": "STRING"
+        },
+        {
+          "name": "style",
+          "type": "UINT8"
+        },
+        {
+          "name": "leader_count",
+          "type": "UINT8"
+        },
+        {
+          "name": "leader_name",
+          "type": "STRING"
+        },
+        {
+          "name": "leader_is_male",
+          "type": "BOOL"
+        },
+        {
+          "name": "is_playable",
+          "type": "BOOL"
+        },
+        {
+          "name": "barbarian_type",
+          "type": "BARBARIAN_TYPE"
+        },
+        {
+          "name": "nsets",
+          "type": "UINT8"
+        },
+        {
+          "name": "sets",
+          "type": "UINT8"
+        },
+        {
+          "name": "ngroups",
+          "type": "UINT8"
+        },
+        {
+          "name": "groups",
+          "type": "UINT8"
+        },
+        {
+          "name": "init_government_id",
+          "type": "GOVERNMENT"
+        },
+        {
+          "name": "init_techs_count",
+          "type": "UINT8"
+        },
+        {
+          "name": "init_techs",
+          "type": "TECH"
+        },
+        {
+          "name": "init_units_count",
+          "type": "UINT8"
+        },
+        {
+          "name": "init_units",
+          "type": "UNIT_TYPE"
+        },
+        {
+          "name": "init_buildings_count",
+          "type": "UINT8"
+        },
+        {
+          "name": "init_buildings",
+          "type": "IMPROVEMENT"
+        }
+      ]
+    },
+    "nation_availability": {
+      "id": 237,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "ncount",
+          "type": "UINT16"
+        },
+        {
+          "name": "is_pickable",
+          "type": "BOOL"
+        },
+        {
+          "name": "nationset_change",
+          "type": "BOOL"
+        }
+      ]
+    },
+    "ruleset_style": {
+      "id": 239,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UINT8"
+        },
+        {
+          "name": "name",
+          "type": "STRING"
+        },
+        {
+          "name": "rule_name",
+          "type": "STRING"
+        }
+      ]
+    },
+    "ruleset_city": {
+      "id": 149,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "style_id",
+          "type": "UINT8"
+        },
+        {
+          "name": "name",
+          "type": "STRING"
+        },
+        {
+          "name": "rule_name",
+          "type": "STRING"
+        },
+        {
+          "name": "citizens_graphic",
+          "type": "STRING"
+        },
+        {
+          "name": "reqs",
+          "type": "REQUIREMENT"
+        },
+        {
+          "name": "graphic",
+          "type": "STRING"
+        },
+        {
+          "name": "graphic_alt",
+          "type": "STRING"
+        }
+      ]
+    },
+    "ruleset_building": {
+      "id": 150,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "IMPROVEMENT"
+        },
+        {
+          "name": "genus",
+          "type": "IMPR_GENUS"
+        },
+        {
+          "name": "name",
+          "type": "STRING"
+        },
+        {
+          "name": "rule_name",
+          "type": "STRING"
+        },
+        {
+          "name": "graphic_str",
+          "type": "STRING"
+        },
+        {
+          "name": "graphic_alt",
+          "type": "STRING"
+        },
+        {
+          "name": "graphic_alt2",
+          "type": "STRING"
+        },
+        {
+          "name": "reqs",
+          "type": "REQUIREMENT"
+        },
+        {
+          "name": "obs_reqs",
+          "type": "REQUIREMENT"
+        },
+        {
+          "name": "build_cost",
+          "type": "UINT16"
+        },
+        {
+          "name": "upkeep",
+          "type": "UINT8"
+        },
+        {
+          "name": "sabotage",
+          "type": "UINT8"
+        },
+        {
+          "name": "flags",
+          "type": "BV_IMPR_FLAGS"
+        },
+        {
+          "name": "soundtag",
+          "type": "STRING"
+        },
+        {
+          "name": "soundtag_alt",
+          "type": "STRING"
+        },
+        {
+          "name": "soundtag_alt2",
+          "type": "STRING"
+        },
+        {
+          "name": "helptext",
+          "type": "STRVEC"
+        }
+      ]
+    },
+    "ruleset_impr_flag": {
+      "id": 20,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UINT8"
+        },
+        {
+          "name": "name",
+          "type": "STRING"
+        },
+        {
+          "name": "helptxt",
+          "type": "STRING"
+        }
+      ]
+    },
+    "ruleset_terrain": {
+      "id": 151,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "TERRAIN"
+        },
+        {
+          "name": "tclass",
+          "type": "UINT8"
+        },
+        {
+          "name": "flags",
+          "type": "BV_TERRAIN_FLAGS"
+        },
+        {
+          "name": "native_to",
+          "type": "BV_UNIT_CLASSES"
+        },
+        {
+          "name": "name",
+          "type": "STRING"
+        },
+        {
+          "name": "rule_name",
+          "type": "STRING"
+        },
+        {
+          "name": "graphic_str",
+          "type": "STRING"
+        },
+        {
+          "name": "graphic_alt",
+          "type": "STRING"
+        },
+        {
+          "name": "graphic_alt2",
+          "type": "STRING"
+        },
+        {
+          "name": "movement_cost",
+          "type": "UINT16"
+        },
+        {
+          "name": "defense_bonus",
+          "type": "SINT16"
+        },
+        {
+          "name": "output",
+          "type": "UINT8"
+        },
+        {
+          "name": "num_resources",
+          "type": "UINT8"
+        },
+        {
+          "name": "resources",
+          "type": "RESOURCE"
+        },
+        {
+          "name": "resource_freq",
+          "type": "UINT8"
+        },
+        {
+          "name": "road_output_incr_pct",
+          "type": "UINT16"
+        },
+        {
+          "name": "base_time",
+          "type": "UINT8"
+        },
+        {
+          "name": "road_time",
+          "type": "UINT8"
+        },
+        {
+          "name": "cultivate_result",
+          "type": "TERRAIN"
+        },
+        {
+          "name": "cultivate_time",
+          "type": "UINT8"
+        },
+        {
+          "name": "plant_result",
+          "type": "TERRAIN"
+        },
+        {
+          "name": "plant_time",
+          "type": "UINT8"
+        },
+        {
+          "name": "irrigation_food_incr",
+          "type": "UINT8"
+        },
+        {
+          "name": "irrigation_time",
+          "type": "UINT8"
+        },
+        {
+          "name": "mining_shield_incr",
+          "type": "UINT8"
+        },
+        {
+          "name": "mining_time",
+          "type": "UINT8"
+        },
+        {
+          "name": "animal",
+          "type": "SINT16"
+        },
+        {
+          "name": "transform_result",
+          "type": "TERRAIN"
+        },
+        {
+          "name": "transform_time",
+          "type": "UINT8"
+        },
+        {
+          "name": "placing_time",
+          "type": "UINT8"
+        },
+        {
+          "name": "pillage_time",
+          "type": "UINT8"
+        },
+        {
+          "name": "extra_count",
+          "type": "UINT8"
+        },
+        {
+          "name": "extra_removal_times",
+          "type": "UINT8"
+        },
+        {
+          "name": "color_red",
+          "type": "UINT8"
+        },
+        {
+          "name": "color_green",
+          "type": "UINT8"
+        },
+        {
+          "name": "color_blue",
+          "type": "UINT8"
+        },
+        {
+          "name": "helptext",
+          "type": "STRVEC"
+        }
+      ]
+    },
+    "ruleset_terrain_flag": {
+      "id": 231,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UINT8"
+        },
+        {
+          "name": "name",
+          "type": "STRING"
+        },
+        {
+          "name": "helptxt",
+          "type": "STRING"
+        }
+      ]
+    },
+    "ruleset_unit_class": {
+      "id": 152,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UINT8"
+        },
+        {
+          "name": "name",
+          "type": "STRING"
+        },
+        {
+          "name": "rule_name",
+          "type": "STRING"
+        },
+        {
+          "name": "min_speed",
+          "type": "MOVEFRAGS"
+        },
+        {
+          "name": "hp_loss_pct",
+          "type": "UINT8"
+        },
+        {
+          "name": "non_native_def_pct",
+          "type": "UINT16"
+        },
+        {
+          "name": "flags",
+          "type": "BV_UCLASS_FLAGS"
+        },
+        {
+          "name": "helptext",
+          "type": "STRVEC"
+        }
+      ]
+    },
+    "ruleset_extra": {
+      "id": 232,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UINT8"
+        },
+        {
+          "name": "name",
+          "type": "STRING"
+        },
+        {
+          "name": "rule_name",
+          "type": "STRING"
+        },
+        {
+          "name": "category",
+          "type": "UINT8"
+        },
+        {
+          "name": "causes",
+          "type": "BV_CAUSES"
+        },
+        {
+          "name": "rmcauses",
+          "type": "BV_RMCAUSES"
+        },
+        {
+          "name": "activity_gfx",
+          "type": "STRING"
+        },
+        {
+          "name": "act_gfx_alt",
+          "type": "STRING"
+        },
+        {
+          "name": "act_gfx_alt2",
+          "type": "STRING"
+        },
+        {
+          "name": "rmact_gfx",
+          "type": "STRING"
+        },
+        {
+          "name": "rmact_gfx_alt",
+          "type": "STRING"
+        },
+        {
+          "name": "rmact_gfx_alt2",
+          "type": "STRING"
+        },
+        {
+          "name": "graphic_str",
+          "type": "STRING"
+        },
+        {
+          "name": "graphic_alt",
+          "type": "STRING"
+        },
+        {
+          "name": "reqs",
+          "type": "REQUIREMENT"
+        },
+        {
+          "name": "rmreqs",
+          "type": "REQUIREMENT"
+        },
+        {
+          "name": "appearance_chance",
+          "type": "UINT16"
+        },
+        {
+          "name": "appearance_reqs",
+          "type": "REQUIREMENT"
+        },
+        {
+          "name": "disappearance_chance",
+          "type": "UINT16"
+        },
+        {
+          "name": "disappearance_reqs",
+          "type": "REQUIREMENT"
+        },
+        {
+          "name": "visibility_req",
+          "type": "TECH"
+        },
+        {
+          "name": "buildable",
+          "type": "BOOL"
+        },
+        {
+          "name": "generated",
+          "type": "BOOL"
+        },
+        {
+          "name": "build_time",
+          "type": "UINT8"
+        },
+        {
+          "name": "build_time_factor",
+          "type": "UINT8"
+        },
+        {
+          "name": "removal_time",
+          "type": "UINT8"
+        },
+        {
+          "name": "removal_time_factor",
+          "type": "UINT8"
+        },
+        {
+          "name": "infracost",
+          "type": "UINT16"
+        },
+        {
+          "name": "defense_bonus",
+          "type": "UINT8"
+        },
+        {
+          "name": "eus",
+          "type": "EUS"
+        },
+        {
+          "name": "native_to",
+          "type": "BV_UNIT_CLASSES"
+        },
+        {
+          "name": "flags",
+          "type": "BV_EXTRA_FLAGS"
+        },
+        {
+          "name": "hidden_by",
+          "type": "BV_EXTRAS"
+        },
+        {
+          "name": "bridged_over",
+          "type": "BV_EXTRAS"
+        },
+        {
+          "name": "conflicts",
+          "type": "BV_EXTRAS"
+        },
+        {
+          "name": "no_aggr_near_city",
+          "type": "SINT8"
+        },
+        {
+          "name": "helptext",
+          "type": "STRVEC"
+        }
+      ]
+    },
+    "ruleset_extra_flag": {
+      "id": 226,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UINT8"
+        },
+        {
+          "name": "name",
+          "type": "STRING"
+        },
+        {
+          "name": "helptxt",
+          "type": "STRING"
+        }
+      ]
+    },
+    "ruleset_base": {
+      "id": 153,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UINT8"
+        },
+        {
+          "name": "gui_type",
+          "type": "BASE_GUI"
+        },
+        {
+          "name": "border_sq",
+          "type": "SINT8"
+        },
+        {
+          "name": "vision_main_sq",
+          "type": "SINT8"
+        },
+        {
+          "name": "vision_invis_sq",
+          "type": "SINT8"
+        },
+        {
+          "name": "vision_subs_sq",
+          "type": "SINT8"
+        }
+      ]
+    },
+    "ruleset_road": {
+      "id": 220,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UINT8"
+        },
+        {
+          "name": "gui_type",
+          "type": "ROAD_GUI"
+        },
+        {
+          "name": "first_reqs",
+          "type": "REQUIREMENT"
+        },
+        {
+          "name": "move_cost",
+          "type": "SINT16"
+        },
+        {
+          "name": "move_mode",
+          "type": "MOVE_MODE"
+        },
+        {
+          "name": "tile_incr_const",
+          "type": "UINT16"
+        },
+        {
+          "name": "tile_incr",
+          "type": "UINT16"
+        },
+        {
+          "name": "tile_bonus",
+          "type": "UINT16"
+        },
+        {
+          "name": "compat",
+          "type": "ROAD_COMPAT"
+        },
+        {
+          "name": "integrates",
+          "type": "BV_MAX_EXTRAS"
+        },
+        {
+          "name": "flags",
+          "type": "BV_ROAD_FLAGS"
+        }
+      ]
+    },
+    "ruleset_goods": {
+      "id": 248,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UINT8"
+        },
+        {
+          "name": "name",
+          "type": "STRING"
+        },
+        {
+          "name": "rule_name",
+          "type": "STRING"
+        },
+        {
+          "name": "reqs",
+          "type": "REQUIREMENT"
+        },
+        {
+          "name": "from_pct",
+          "type": "UINT16"
+        },
+        {
+          "name": "to_pct",
+          "type": "UINT16"
+        },
+        {
+          "name": "onetime_pct",
+          "type": "UINT16"
+        },
+        {
+          "name": "select_priority",
+          "type": "UINT16"
+        },
+        {
+          "name": "replace_priority",
+          "type": "UINT16"
+        },
+        {
+          "name": "flags",
+          "type": "BV_GOODS_FLAGS"
+        },
+        {
+          "name": "helptext",
+          "type": "STRVEC"
+        }
+      ]
+    },
+    "ruleset_disaster": {
+      "id": 224,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UINT8"
+        },
+        {
+          "name": "name",
+          "type": "STRING"
+        },
+        {
+          "name": "rule_name",
+          "type": "STRING"
+        },
+        {
+          "name": "reqs",
+          "type": "REQUIREMENT"
+        },
+        {
+          "name": "frequency",
+          "type": "UINT8"
+        },
+        {
+          "name": "effects",
+          "type": "BV_DISASTER_EFFECTS"
+        }
+      ]
+    },
+    "ruleset_achievement": {
+      "id": 233,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UINT8"
+        },
+        {
+          "name": "name",
+          "type": "STRING"
+        },
+        {
+          "name": "rule_name",
+          "type": "STRING"
+        },
+        {
+          "name": "type",
+          "type": "ACHIEVEMENT_TYPE"
+        },
+        {
+          "name": "unique",
+          "type": "BOOL"
+        },
+        {
+          "name": "value",
+          "type": "UINT16"
+        }
+      ]
+    },
+    "ruleset_trade": {
+      "id": 227,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UINT8"
+        },
+        {
+          "name": "trade_pct",
+          "type": "UINT16"
+        },
+        {
+          "name": "cancelling",
+          "type": "TRI"
+        },
+        {
+          "name": "bonus_type",
+          "type": "TR_BONUS_TYPE"
+        }
+      ]
+    },
+    "ruleset_action": {
+      "id": 246,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "ACTION_ID"
+        },
+        {
+          "name": "ui_name",
+          "type": "STRING"
+        },
+        {
+          "name": "quiet",
+          "type": "BOOL"
+        },
+        {
+          "name": "result",
+          "type": "ACTION_RESULT"
+        },
+        {
+          "name": "sub_results",
+          "type": "BV_ACTION_SUB_RES"
+        },
+        {
+          "name": "actor_consuming_always",
+          "type": "BOOL"
+        },
+        {
+          "name": "act_kind",
+          "type": "ACTOR_KIND"
+        },
+        {
+          "name": "tgt_kind",
+          "type": "TARGET_KIND"
+        },
+        {
+          "name": "sub_tgt_kind",
+          "type": "SUB_TARGET_KIND"
+        },
+        {
+          "name": "min_distance",
+          "type": "SINT32"
+        },
+        {
+          "name": "max_distance",
+          "type": "SINT32"
+        },
+        {
+          "name": "blocked_by",
+          "type": "BV_ACTIONS"
+        }
+      ]
+    },
+    "ruleset_action_enabler": {
+      "id": 235,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "enabled_action",
+          "type": "ACTION_ID"
+        },
+        {
+          "name": "actor_reqs",
+          "type": "REQUIREMENT"
+        },
+        {
+          "name": "target_reqs",
+          "type": "REQUIREMENT"
+        }
+      ]
+    },
+    "ruleset_action_auto": {
+      "id": 252,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UINT8"
+        },
+        {
+          "name": "cause",
+          "type": "ACTION_AUTO_CAUSE"
+        },
+        {
+          "name": "reqs",
+          "type": "REQUIREMENT"
+        },
+        {
+          "name": "alternatives_count",
+          "type": "UINT8"
+        },
+        {
+          "name": "alternatives",
+          "type": "ACTION_ID"
+        }
+      ]
+    },
+    "ruleset_counter": {
+      "id": 513,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "name",
+          "type": "STRING"
+        },
+        {
+          "name": "rule_name",
+          "type": "STRING"
+        },
+        {
+          "name": "helptext",
+          "type": "STRVEC"
+        },
+        {
+          "name": "def",
+          "type": "UINT32"
+        },
+        {
+          "name": "checkpoint",
+          "type": "UINT32"
+        },
+        {
+          "name": "type",
+          "type": "COUNTER_TARGET"
+        },
+        {
+          "name": "behaviour",
+          "type": "COUNTER_BEHAVIOUR"
+        }
+      ]
+    },
+    "ruleset_music": {
+      "id": 240,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UINT8"
+        },
+        {
+          "name": "music_peaceful",
+          "type": "STRING"
+        },
+        {
+          "name": "music_combat",
+          "type": "STRING"
+        },
+        {
+          "name": "reqs",
+          "type": "REQUIREMENT"
+        }
+      ]
+    },
+    "ruleset_multiplier": {
+      "id": 243,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "MULTIPLIER"
+        },
+        {
+          "name": "start",
+          "type": "SINT32"
+        },
+        {
+          "name": "stop",
+          "type": "SINT32"
+        },
+        {
+          "name": "step",
+          "type": "UINT32"
+        },
+        {
+          "name": "def",
+          "type": "SINT32"
+        },
+        {
+          "name": "offset",
+          "type": "SINT32"
+        },
+        {
+          "name": "factor",
+          "type": "SINT32"
+        },
+        {
+          "name": "minimum_turns",
+          "type": "UINT16"
+        },
+        {
+          "name": "name",
+          "type": "STRING"
+        },
+        {
+          "name": "rule_name",
+          "type": "STRING"
+        },
+        {
+          "name": "reqs",
+          "type": "REQUIREMENT"
+        },
+        {
+          "name": "helptext",
+          "type": "STRVEC"
+        }
+      ]
+    },
+    "ruleset_clause": {
+      "id": 512,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "type",
+          "type": "CLAUSE"
+        },
+        {
+          "name": "enabled",
+          "type": "BOOL"
+        },
+        {
+          "name": "giver_reqs",
+          "type": "REQUIREMENT"
+        },
+        {
+          "name": "receiver_reqs",
+          "type": "REQUIREMENT"
+        },
+        {
+          "name": "either_reqs",
+          "type": "REQUIREMENT"
+        }
+      ]
+    },
+    "ruleset_control": {
+      "id": 155,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "num_unit_classes",
+          "type": "UINT16"
+        },
+        {
+          "name": "num_unit_types",
+          "type": "UINT16"
+        },
+        {
+          "name": "num_impr_types",
+          "type": "UINT16"
+        },
+        {
+          "name": "num_tech_classes",
+          "type": "UINT16"
+        },
+        {
+          "name": "num_tech_types",
+          "type": "UINT16"
+        },
+        {
+          "name": "num_extra_types",
+          "type": "UINT16"
+        },
+        {
+          "name": "num_base_types",
+          "type": "UINT16"
+        },
+        {
+          "name": "num_road_types",
+          "type": "UINT16"
+        },
+        {
+          "name": "num_resource_types",
+          "type": "UINT16"
+        },
+        {
+          "name": "num_goods_types",
+          "type": "UINT16"
+        },
+        {
+          "name": "num_disaster_types",
+          "type": "UINT16"
+        },
+        {
+          "name": "num_achievement_types",
+          "type": "UINT16"
+        },
+        {
+          "name": "num_multipliers",
+          "type": "UINT16"
+        },
+        {
+          "name": "num_styles",
+          "type": "UINT16"
+        },
+        {
+          "name": "num_music_styles",
+          "type": "UINT16"
+        },
+        {
+          "name": "government_count",
+          "type": "UINT16"
+        },
+        {
+          "name": "nation_count",
+          "type": "UINT16"
+        },
+        {
+          "name": "num_city_styles",
+          "type": "UINT16"
+        },
+        {
+          "name": "terrain_count",
+          "type": "UINT16"
+        },
+        {
+          "name": "num_specialist_types",
+          "type": "UINT16"
+        },
+        {
+          "name": "num_nation_groups",
+          "type": "UINT16"
+        },
+        {
+          "name": "num_nation_sets",
+          "type": "UINT16"
+        },
+        {
+          "name": "preferred_tileset",
+          "type": "STRING"
+        },
+        {
+          "name": "preferred_soundset",
+          "type": "STRING"
+        },
+        {
+          "name": "preferred_musicset",
+          "type": "STRING"
+        },
+        {
+          "name": "popup_tech_help",
+          "type": "BOOL"
+        },
+        {
+          "name": "name",
+          "type": "STRING"
+        },
+        {
+          "name": "version",
+          "type": "STRING"
+        },
+        {
+          "name": "alt_dir",
+          "type": "STRING"
+        },
+        {
+          "name": "desc_length",
+          "type": "UINT32"
+        },
+        {
+          "name": "num_counters",
+          "type": "UINT16"
+        }
+      ]
+    },
+    "ruleset_summary": {
+      "id": 251,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "text",
+          "type": "STRING"
+        }
+      ]
+    },
+    "ruleset_description_part": {
+      "id": 247,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "text",
+          "type": "STRING"
+        }
+      ]
+    },
+    "single_want_hack_req": {
+      "id": 160,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "token",
+          "type": "STRING"
+        }
+      ]
+    },
+    "single_want_hack_reply": {
+      "id": 161,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "you_have_hack",
+          "type": "BOOL"
+        }
+      ]
+    },
+    "ruleset_choices": {
+      "id": 162,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "ruleset_count",
+          "type": "UINT8"
+        },
+        {
+          "name": "rulesets",
+          "type": "STRING"
+        }
+      ]
+    },
+    "ruleset_select": {
+      "id": 171,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "modpack",
+          "type": "STRING"
+        }
+      ]
+    },
+    "game_load": {
+      "id": 163,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "load_successful",
+          "type": "BOOL"
+        },
+        {
+          "name": "load_filename",
+          "type": "STRING"
+        }
+      ]
+    },
+    "server_setting_control": {
+      "id": 164,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "settings_num",
+          "type": "UINT16"
+        },
+        {
+          "name": "categories_num",
+          "type": "UINT8"
+        },
+        {
+          "name": "category_names",
+          "type": "STRING"
+        }
+      ]
+    },
+    "server_setting_const": {
+      "id": 165,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UINT16"
+        },
+        {
+          "name": "name",
+          "type": "STRING"
+        },
+        {
+          "name": "short_help",
+          "type": "STRING"
+        },
+        {
+          "name": "extra_help",
+          "type": "STRING"
+        },
+        {
+          "name": "category",
+          "type": "UINT8"
+        }
+      ]
+    },
+    "server_setting_bool": {
+      "id": 166,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UINT16"
+        },
+        {
+          "name": "is_visible",
+          "type": "BOOL"
+        },
+        {
+          "name": "is_changeable",
+          "type": "BOOL"
+        },
+        {
+          "name": "initial_setting",
+          "type": "BOOL"
+        },
+        {
+          "name": "setdef",
+          "type": "SETDEFLVL"
+        },
+        {
+          "name": "val",
+          "type": "BOOL"
+        },
+        {
+          "name": "default_val",
+          "type": "BOOL"
+        }
+      ]
+    },
+    "server_setting_int": {
+      "id": 167,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UINT16"
+        },
+        {
+          "name": "is_visible",
+          "type": "BOOL"
+        },
+        {
+          "name": "is_changeable",
+          "type": "BOOL"
+        },
+        {
+          "name": "initial_setting",
+          "type": "BOOL"
+        },
+        {
+          "name": "setdef",
+          "type": "SETDEFLVL"
+        },
+        {
+          "name": "val",
+          "type": "SINT32"
+        },
+        {
+          "name": "default_val",
+          "type": "SINT32"
+        },
+        {
+          "name": "min_val",
+          "type": "SINT32"
+        },
+        {
+          "name": "max_val",
+          "type": "SINT32"
+        }
+      ]
+    },
+    "server_setting_str": {
+      "id": 168,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UINT16"
+        },
+        {
+          "name": "is_visible",
+          "type": "BOOL"
+        },
+        {
+          "name": "is_changeable",
+          "type": "BOOL"
+        },
+        {
+          "name": "initial_setting",
+          "type": "BOOL"
+        },
+        {
+          "name": "setdef",
+          "type": "SETDEFLVL"
+        },
+        {
+          "name": "val",
+          "type": "STRING"
+        },
+        {
+          "name": "default_val",
+          "type": "STRING"
+        }
+      ]
+    },
+    "server_setting_enum": {
+      "id": 169,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UINT16"
+        },
+        {
+          "name": "is_visible",
+          "type": "BOOL"
+        },
+        {
+          "name": "is_changeable",
+          "type": "BOOL"
+        },
+        {
+          "name": "initial_setting",
+          "type": "BOOL"
+        },
+        {
+          "name": "setdef",
+          "type": "SETDEFLVL"
+        },
+        {
+          "name": "val",
+          "type": "SINT8"
+        },
+        {
+          "name": "default_val",
+          "type": "SINT8"
+        },
+        {
+          "name": "values_num",
+          "type": "SINT8"
+        },
+        {
+          "name": "support_names",
+          "type": "STRING"
+        },
+        {
+          "name": "pretty_names",
+          "type": "STRING"
+        }
+      ]
+    },
+    "server_setting_bitwise": {
+      "id": 170,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UINT16"
+        },
+        {
+          "name": "is_visible",
+          "type": "BOOL"
+        },
+        {
+          "name": "is_changeable",
+          "type": "BOOL"
+        },
+        {
+          "name": "initial_setting",
+          "type": "BOOL"
+        },
+        {
+          "name": "setdef",
+          "type": "SETDEFLVL"
+        },
+        {
+          "name": "val",
+          "type": "UINT16"
+        },
+        {
+          "name": "default_val",
+          "type": "UINT16"
+        },
+        {
+          "name": "bits_num",
+          "type": "UINT8"
+        },
+        {
+          "name": "support_names",
+          "type": "STRING"
+        },
+        {
+          "name": "pretty_names",
+          "type": "STRING"
+        }
+      ]
+    },
+    "set_topology": {
+      "id": 253,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "topology_id",
+          "type": "UINT8"
+        },
+        {
+          "name": "wrap_id",
+          "type": "UINT8"
+        }
+      ]
+    },
+    "ruleset_effect": {
+      "id": 175,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "effect_type",
+          "type": "EFFECT_TYPE"
+        },
+        {
+          "name": "effect_value",
+          "type": "SINT32"
+        },
+        {
+          "name": "has_multiplier",
+          "type": "BOOL"
+        },
+        {
+          "name": "multiplier",
+          "type": "MULTIPLIER"
+        },
+        {
+          "name": "reqs",
+          "type": "REQUIREMENT"
+        }
+      ]
+    },
+    "ruleset_resource": {
+      "id": 177,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UINT8"
+        },
+        {
+          "name": "output",
+          "type": "UINT8"
+        }
+      ]
+    },
+    "scenario_info": {
+      "id": 180,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "is_scenario",
+          "type": "BOOL"
+        },
+        {
+          "name": "name",
+          "type": "STRING"
+        },
+        {
+          "name": "authors",
+          "type": "STRING"
+        },
+        {
+          "name": "players",
+          "type": "BOOL"
+        },
+        {
+          "name": "startpos_nations",
+          "type": "BOOL"
+        },
+        {
+          "name": "save_random",
+          "type": "BOOL"
+        },
+        {
+          "name": "prevent_new_cities",
+          "type": "BOOL"
+        },
+        {
+          "name": "lake_flooding",
+          "type": "BOOL"
+        },
+        {
+          "name": "handmade",
+          "type": "BOOL"
+        },
+        {
+          "name": "allow_ai_type_fallback",
+          "type": "BOOL"
+        },
+        {
+          "name": "ruleset_locked",
+          "type": "BOOL"
+        },
+        {
+          "name": "datafile",
+          "type": "STRING"
+        },
+        {
+          "name": "have_resources",
+          "type": "BOOL"
+        },
+        {
+          "name": "req_caps",
+          "type": "STRING"
+        }
+      ]
+    },
+    "scenario_description": {
+      "id": 13,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "description",
+          "type": "STRING"
+        }
+      ]
+    },
+    "save_scenario": {
+      "id": 181,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "name",
+          "type": "STRING"
+        }
+      ]
+    },
+    "vote_new": {
+      "id": 185,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "vote_no",
+          "type": "UINT32"
+        },
+        {
+          "name": "user",
+          "type": "STRING"
+        },
+        {
+          "name": "desc",
+          "type": "STRING"
+        },
+        {
+          "name": "percent_required",
+          "type": "UINT8"
+        },
+        {
+          "name": "flags",
+          "type": "UINT32"
+        }
+      ]
+    },
+    "vote_update": {
+      "id": 186,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "vote_no",
+          "type": "UINT32"
+        },
+        {
+          "name": "yes",
+          "type": "UINT8"
+        },
+        {
+          "name": "no",
+          "type": "UINT8"
+        },
+        {
+          "name": "abstain",
+          "type": "UINT8"
+        },
+        {
+          "name": "num_voters",
+          "type": "UINT8"
+        }
+      ]
+    },
+    "vote_remove": {
+      "id": 187,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "vote_no",
+          "type": "UINT32"
+        }
+      ]
+    },
+    "vote_resolve": {
+      "id": 188,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "vote_no",
+          "type": "UINT32"
+        },
+        {
+          "name": "passed",
+          "type": "BOOL"
+        }
+      ]
+    },
+    "vote_submit": {
+      "id": 189,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "vote_no",
+          "type": "UINT32"
+        },
+        {
+          "name": "value",
+          "type": "SINT8"
+        }
+      ]
+    },
+    "edit_mode": {
+      "id": 190,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "state",
+          "type": "BOOL"
+        }
+      ]
+    },
+    "edit_recalculate_borders": {
+      "id": 197,
+      "client_to_server": true,
+      "fields": []
+    },
+    "edit_check_tiles": {
+      "id": 198,
+      "client_to_server": true,
+      "fields": []
+    },
+    "edit_toggle_fogofwar": {
+      "id": 199,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "player",
+          "type": "PLAYER"
+        }
+      ]
+    },
+    "edit_tile_terrain": {
+      "id": 200,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "tile",
+          "type": "TILE"
+        },
+        {
+          "name": "terrain",
+          "type": "TERRAIN"
+        },
+        {
+          "name": "size",
+          "type": "UINT8"
+        }
+      ]
+    },
+    "edit_tile_extra": {
+      "id": 202,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "tile",
+          "type": "TILE"
+        },
+        {
+          "name": "extra_type_id",
+          "type": "EXTRA"
+        },
+        {
+          "name": "removal",
+          "type": "BOOL"
+        },
+        {
+          "name": "eowner",
+          "type": "PLAYER"
+        },
+        {
+          "name": "size",
+          "type": "UINT8"
+        }
+      ]
+    },
+    "edit_startpos": {
+      "id": 204,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "id",
+          "type": "TILE"
+        },
+        {
+          "name": "removal",
+          "type": "BOOL"
+        },
+        {
+          "name": "tag",
+          "type": "SINT32"
+        }
+      ]
+    },
+    "edit_startpos_full": {
+      "id": 205,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "id",
+          "type": "TILE"
+        },
+        {
+          "name": "exclude",
+          "type": "BOOL"
+        },
+        {
+          "name": "nations",
+          "type": "BV_STARTPOS_NATIONS"
+        }
+      ]
+    },
+    "edit_tile": {
+      "id": 206,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "tile",
+          "type": "TILE"
+        },
+        {
+          "name": "extras",
+          "type": "BV_EXTRAS"
+        },
+        {
+          "name": "resource",
+          "type": "RESOURCE"
+        },
+        {
+          "name": "terrain",
+          "type": "TERRAIN"
+        },
+        {
+          "name": "startpos_nation",
+          "type": "NATION"
+        },
+        {
+          "name": "eowner",
+          "type": "PLAYER"
+        },
+        {
+          "name": "label",
+          "type": "STRING"
+        }
+      ]
+    },
+    "edit_unit_create": {
+      "id": 207,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "owner",
+          "type": "PLAYER"
+        },
+        {
+          "name": "tile",
+          "type": "TILE"
+        },
+        {
+          "name": "type",
+          "type": "UNIT_TYPE"
+        },
+        {
+          "name": "count",
+          "type": "UINT8"
+        },
+        {
+          "name": "tag",
+          "type": "SINT32"
+        }
+      ]
+    },
+    "edit_unit_remove": {
+      "id": 208,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "owner",
+          "type": "PLAYER"
+        },
+        {
+          "name": "tile",
+          "type": "TILE"
+        },
+        {
+          "name": "type",
+          "type": "UNIT_TYPE"
+        },
+        {
+          "name": "count",
+          "type": "UINT8"
+        }
+      ]
+    },
+    "edit_unit_remove_by_id": {
+      "id": 209,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UNIT"
+        }
+      ]
+    },
+    "edit_unit": {
+      "id": 210,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UNIT"
+        },
+        {
+          "name": "utype",
+          "type": "UNIT_TYPE"
+        },
+        {
+          "name": "owner",
+          "type": "PLAYER"
+        },
+        {
+          "name": "homecity",
+          "type": "CITY"
+        },
+        {
+          "name": "moves_left",
+          "type": "MOVEFRAGS"
+        },
+        {
+          "name": "hp",
+          "type": "UINT8"
+        },
+        {
+          "name": "veteran",
+          "type": "UINT8"
+        },
+        {
+          "name": "fuel",
+          "type": "UINT8"
+        },
+        {
+          "name": "activity",
+          "type": "ACTIVITY"
+        },
+        {
+          "name": "activity_count",
+          "type": "UINT16"
+        },
+        {
+          "name": "activity_base",
+          "type": "BASE"
+        },
+        {
+          "name": "debug",
+          "type": "BOOL"
+        },
+        {
+          "name": "moved",
+          "type": "BOOL"
+        },
+        {
+          "name": "paradropped",
+          "type": "BOOL"
+        },
+        {
+          "name": "done_moving",
+          "type": "BOOL"
+        },
+        {
+          "name": "transported_by",
+          "type": "UNIT"
+        },
+        {
+          "name": "stay",
+          "type": "BOOL"
+        }
+      ]
+    },
+    "edit_city_create": {
+      "id": 211,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "owner",
+          "type": "PLAYER"
+        },
+        {
+          "name": "tile",
+          "type": "TILE"
+        },
+        {
+          "name": "size",
+          "type": "UINT8"
+        },
+        {
+          "name": "tag",
+          "type": "SINT32"
+        }
+      ]
+    },
+    "edit_city_remove": {
+      "id": 212,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "id",
+          "type": "CITY"
+        }
+      ]
+    },
+    "edit_city": {
+      "id": 213,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "id",
+          "type": "CITY"
+        },
+        {
+          "name": "name",
+          "type": "ESTRING"
+        },
+        {
+          "name": "owner",
+          "type": "PLAYER"
+        },
+        {
+          "name": "original",
+          "type": "PLAYER"
+        },
+        {
+          "name": "size",
+          "type": "UINT8"
+        },
+        {
+          "name": "history",
+          "type": "UINT32"
+        },
+        {
+          "name": "ppl_happy",
+          "type": "UINT8"
+        },
+        {
+          "name": "ppl_content",
+          "type": "UINT8"
+        },
+        {
+          "name": "ppl_unhappy",
+          "type": "UINT8"
+        },
+        {
+          "name": "ppl_angry",
+          "type": "UINT8"
+        },
+        {
+          "name": "specialists_size",
+          "type": "UINT8"
+        },
+        {
+          "name": "specialists",
+          "type": "UINT8"
+        },
+        {
+          "name": "food_stock",
+          "type": "UINT16"
+        },
+        {
+          "name": "shield_stock",
+          "type": "UINT16"
+        },
+        {
+          "name": "airlift",
+          "type": "BOOL"
+        },
+        {
+          "name": "debug",
+          "type": "BOOL"
+        },
+        {
+          "name": "did_buy",
+          "type": "BOOL"
+        },
+        {
+          "name": "did_sell",
+          "type": "BOOL"
+        },
+        {
+          "name": "was_happy",
+          "type": "BOOL"
+        },
+        {
+          "name": "had_famine",
+          "type": "BOOL"
+        },
+        {
+          "name": "anarchy",
+          "type": "UINT8"
+        },
+        {
+          "name": "rapture",
+          "type": "UINT8"
+        },
+        {
+          "name": "steal",
+          "type": "UINT8"
+        },
+        {
+          "name": "turn_founded",
+          "type": "TURN"
+        },
+        {
+          "name": "turn_last_built",
+          "type": "TURN"
+        },
+        {
+          "name": "built",
+          "type": "SINT32"
+        },
+        {
+          "name": "production_kind",
+          "type": "UINT8"
+        },
+        {
+          "name": "production_value",
+          "type": "UINT8"
+        },
+        {
+          "name": "city_options",
+          "type": "BV_CITY_OPTIONS"
+        }
+      ]
+    },
+    "edit_player_create": {
+      "id": 214,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "tag",
+          "type": "SINT32"
+        }
+      ]
+    },
+    "edit_player_remove": {
+      "id": 215,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "id",
+          "type": "PLAYER"
+        }
+      ]
+    },
+    "edit_player": {
+      "id": 216,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "id",
+          "type": "PLAYER"
+        },
+        {
+          "name": "name",
+          "type": "STRING"
+        },
+        {
+          "name": "username",
+          "type": "STRING"
+        },
+        {
+          "name": "ranked_username",
+          "type": "STRING"
+        },
+        {
+          "name": "user_turns",
+          "type": "TURN"
+        },
+        {
+          "name": "is_male",
+          "type": "BOOL"
+        },
+        {
+          "name": "government",
+          "type": "GOVERNMENT"
+        },
+        {
+          "name": "target_government",
+          "type": "GOVERNMENT"
+        },
+        {
+          "name": "nation",
+          "type": "NATION"
+        },
+        {
+          "name": "team",
+          "type": "TEAM"
+        },
+        {
+          "name": "phase_done",
+          "type": "BOOL"
+        },
+        {
+          "name": "nturns_idle",
+          "type": "TURN"
+        },
+        {
+          "name": "is_alive",
+          "type": "BOOL"
+        },
+        {
+          "name": "revolution_finishes",
+          "type": "TURN"
+        },
+        {
+          "name": "autoselect_weight",
+          "type": "SINT16"
+        },
+        {
+          "name": "embassy",
+          "type": "BV_PLAYER"
+        },
+        {
+          "name": "gold",
+          "type": "GOLD"
+        },
+        {
+          "name": "tax",
+          "type": "PERCENT"
+        },
+        {
+          "name": "science",
+          "type": "PERCENT"
+        },
+        {
+          "name": "luxury",
+          "type": "PERCENT"
+        },
+        {
+          "name": "future_tech",
+          "type": "UINT16"
+        },
+        {
+          "name": "researching",
+          "type": "TECH"
+        },
+        {
+          "name": "bulbs_researched",
+          "type": "UINT32"
+        },
+        {
+          "name": "inventions",
+          "type": "BOOL"
+        },
+        {
+          "name": "ai",
+          "type": "BOOL"
+        },
+        {
+          "name": "scenario_reserved",
+          "type": "BOOL"
+        }
+      ]
+    },
+    "edit_player_vision": {
+      "id": 217,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "player",
+          "type": "PLAYER"
+        },
+        {
+          "name": "tile",
+          "type": "TILE"
+        },
+        {
+          "name": "known",
+          "type": "BOOL"
+        },
+        {
+          "name": "size",
+          "type": "UINT8"
+        }
+      ]
+    },
+    "edit_game": {
+      "id": 218,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "scenario",
+          "type": "BOOL"
+        },
+        {
+          "name": "scenario_name",
+          "type": "STRING"
+        },
+        {
+          "name": "scenario_authors",
+          "type": "STRING"
+        },
+        {
+          "name": "scenario_random",
+          "type": "BOOL"
+        },
+        {
+          "name": "scenario_players",
+          "type": "BOOL"
+        },
+        {
+          "name": "startpos_nations",
+          "type": "BOOL"
+        },
+        {
+          "name": "prevent_new_cities",
+          "type": "BOOL"
+        },
+        {
+          "name": "lake_flooding",
+          "type": "BOOL"
+        },
+        {
+          "name": "ruleset_locked",
+          "type": "BOOL"
+        }
+      ]
+    },
+    "edit_scenario_desc": {
+      "id": 14,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "scenario_desc",
+          "type": "STRING"
+        }
+      ]
+    },
+    "edit_object_created": {
+      "id": 219,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "tag",
+          "type": "SINT32"
+        },
+        {
+          "name": "id",
+          "type": "SINT32"
+        }
+      ]
+    },
+    "play_music": {
+      "id": 245,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "tag",
+          "type": "STRING"
+        }
+      ]
+    },
+    "popup_image": {
+      "id": 515,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "tag",
+          "type": "STRING"
+        }
+      ]
+    },
+    "web_city_info_addition": {
+      "id": 256,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "CITY"
+        },
+        {
+          "name": "cma_enabled",
+          "type": "BOOL"
+        },
+        {
+          "name": "cm_parameter",
+          "type": "CM_PARAMETER"
+        },
+        {
+          "name": "granary_size",
+          "type": "UINT16"
+        },
+        {
+          "name": "granary_turns",
+          "type": "TURN"
+        },
+        {
+          "name": "can_build_unit",
+          "type": "BV_UTYPES"
+        },
+        {
+          "name": "can_build_improvement",
+          "type": "BV_IMPRS"
+        },
+        {
+          "name": "output_food",
+          "type": "UINT8"
+        },
+        {
+          "name": "output_shield",
+          "type": "UINT8"
+        },
+        {
+          "name": "output_trade",
+          "type": "UINT8"
+        }
+      ]
+    },
+    "web_cma_set": {
+      "id": 257,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "id",
+          "type": "CITY"
+        },
+        {
+          "name": "cm_parameter",
+          "type": "CM_PARAMETER"
+        }
+      ]
+    },
+    "web_cma_clear": {
+      "id": 258,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "id",
+          "type": "CITY"
+        }
+      ]
+    },
+    "web_player_info_addition": {
+      "id": 259,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "playerno",
+          "type": "PLAYER"
+        },
+        {
+          "name": "expected_income",
+          "type": "UINT32"
+        }
+      ]
+    },
+    "web_ruleset_unit_addition": {
+      "id": 260,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UNIT_TYPE"
+        },
+        {
+          "name": "utype_actions",
+          "type": "BV_ACTIONS"
+        }
+      ]
+    },
+    "web_goto_path_req": {
+      "id": 287,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "unit_id",
+          "type": "UNIT"
+        },
+        {
+          "name": "goal",
+          "type": "TILE"
+        }
+      ]
+    },
+    "web_goto_path": {
+      "id": 288,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "unit_id",
+          "type": "UNIT"
+        },
+        {
+          "name": "length",
+          "type": "UINT16"
+        },
+        {
+          "name": "dir",
+          "type": "DIRECTION"
+        },
+        {
+          "name": "dest",
+          "type": "TILE"
+        },
+        {
+          "name": "turns",
+          "type": "UINT32"
+        }
+      ]
+    },
+    "web_info_text_req": {
+      "id": 289,
+      "client_to_server": true,
+      "fields": [
+        {
+          "name": "loc",
+          "type": "TILE"
+        },
+        {
+          "name": "visible_unit",
+          "type": "UNIT"
+        },
+        {
+          "name": "focus_unit",
+          "type": "UNIT"
+        }
+      ]
+    },
+    "web_info_text_message": {
+      "id": 290,
+      "client_to_server": false,
+      "fields": [
+        {
+          "name": "message",
+          "type": "STRING"
+        }
+      ]
+    }
+  }
+}
