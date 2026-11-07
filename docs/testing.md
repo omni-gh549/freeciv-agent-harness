@@ -42,6 +42,7 @@ docker rm freeciv-harness-test
 Tested 7 November 2026 against Freeciv-web checkout revision `c19ce060fadc99663f8aba3652ca94b07174467c`, Freeciv.Web.Devel-3.3 JSON protocol, and a locally built `freeciv/freeciv-web` image.
 
 - 50 local regression/interoperability tests passed.
+- The Responses model adapter update passes 56 tests, including partial-stream rejection, endpoint error redaction, missing stream content types, and bypassing system proxies for loopback model endpoints. A real configured model generated a chat plan and the standalone player completed an authorized live turn with confirmed production, route and end-turn requests.
 - 28 checks passed in a fresh, isolated live Docker game, including real pathfinding/goto, server action queries, unit activities, city buildability on rejoin, tax rates, save-file existence, independent chat receipt, next-turn events, nation/lobby configuration and the standalone agent runner completing a turn.
 - Native gameplay tests used the Python service; the official MCP SDK separately initialized, discovered tools, called status, and received typed tool errors through a real subprocess stdio transport.
 - The CLI/HTTP transport separately connected, sent a real in-game message, retrieved its native event, and shut down cleanly. The MCP server has no connection or gameplay side effects at initialization.

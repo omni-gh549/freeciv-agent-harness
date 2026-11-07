@@ -55,6 +55,16 @@ See [the agent playbook](AGENTS.md) and [architecture](docs/architecture.md).
 
 ## Standalone agent loop
 
+For an actual model player, copy `examples/model-config.json` to `runtime/model-agent.json`, choose a Responses-compatible endpoint/model, and set the named API key environment variable if required by your provider. Then run:
+
+```sh
+freeciv-harness play --url http://localhost:8080 --name Agent --model-config runtime/model-agent.json
+```
+
+Keep this process running. It generates replies to native chat events and makes moves on turn events, including the current unfinished turn at startup. It does not need an assistant conversation to wake. MCP on its own supplies controls and receives events; it does **not** run a model or automatically answer chat. Only one agent process should control a given player; disconnect its MCP connection before handing it to `play`.
+
+The built-in adapter sends fog-limited observations and the allowed game tool schemas to the chosen model, requests a JSON plan, then passes that plan through the same ownership/turn validation. The model has no shell, browser, or computer tools. Partial model streams are rejected without executing actions. Provider access, authentication and any subscription/API usage must already be configured and authorized. Endpoint URLs can contain credentials; keep model configuration in ignored `runtime/` and never publish it.
+
 The optional runner invokes **your agent executable directly** when a native turn/chat event arrives. It keeps the game connection alive itself. No Codex conversation or browser tab needs to be kept open.
 
 Create a local command file containing a JSON argument array, for example `["python", "examples/passive_agent.py"]`, then run:
@@ -71,7 +81,7 @@ The executable receives one JSON observation on stdin and returns a JSON plan on
 
 Observations contain own cities/units, status, explored tiles and ruleset data. The harness validates the plan, enforces ownership/stale-turn checks, and stops a plan after an unconfirmed action or turn change. The runner ignores its own chat messages to prevent feedback loops. It never replays mutations automatically. Lifecycle operations such as loading another game are unavailable to agent plans.
 
-`examples/passive_agent.py` demonstrates the executable contract; it acknowledges chat and ends its turn without strategy. Replace it with your own model/agent adapter. **No LLM or API subscription is bundled.** The runner is separate from MCP; when using an assistant's MCP tools, that assistant supplies the reasoning instead. `--max-events 1` bounds a trial; Ctrl+C saves and disconnects the runner.
+`examples/passive_agent.py` demonstrates the executable contract; it acknowledges chat and ends its turn without strategy. Use `play` for the included model adapter, or supply your own executable. **No model weights or API subscription are bundled.** The runner is separate from MCP; when using an assistant's MCP tools, that assistant supplies the reasoning instead. `--max-events 1` bounds a trial; Ctrl+C saves and disconnects the runner.
 
 ## Manual CLI / script use
 

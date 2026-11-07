@@ -61,6 +61,13 @@ def main(argv=None):
     runner.add_argument('--game-port', type=int, default=6001)
     runner.add_argument('--max-events', type=int, default=0)
     runner.add_argument('--agent-timeout', type=int, default=120)
+    play = commands.add_parser('play', help='Play autonomously using a Responses-compatible model')
+    play.add_argument('--model-config', type=Path, required=True, help='Local JSON endpoint/model configuration; never commit credentials')
+    play.add_argument('--url', default='http://localhost:8080')
+    play.add_argument('--name', default='Agent')
+    play.add_argument('--game-port', type=int, default=6001)
+    play.add_argument('--max-events', type=int, default=0)
+    play.add_argument('--agent-timeout', type=int, default=240)
     host = commands.add_parser('host', help='Manage an explicitly selected Freeciv-web Docker stack')
     hsub = host.add_subparsers(dest='host_command', required=True)
     start = hsub.add_parser('start')
@@ -94,11 +101,12 @@ def main(argv=None):
                 service.disconnect()
                 server.server_close()
             return
-        if args.command == 'run-agent':
+        if args.command in ('run-agent', 'play'):
             from .runner import run
             from .service import GameService
             service = GameService()
-            command = json.loads(args.agent_command_file.read_text(encoding='utf-8'))
+            command = ([sys.executable, '-m', 'freeciv_agent.model_agent', '--config', str(args.model_config.resolve())]
+                       if args.command == 'play' else json.loads(args.agent_command_file.read_text(encoding='utf-8')))
             service.connect(args.url, args.name, args.game_port)
             try:
                 run(service, command, args.max_events, args.agent_timeout,
